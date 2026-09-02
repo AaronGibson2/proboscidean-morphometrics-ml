@@ -62,3 +62,9 @@ University of Florida
 
 Specimens from the Florida Museum of Natural History and 
 Smithsonian National Museum of Natural History.
+
+## Data Availability
+
+Raw specimen images are property of the Florida Museum of Natural 
+History and are not included in this repository. Contact the respective institutions 
+for data access.

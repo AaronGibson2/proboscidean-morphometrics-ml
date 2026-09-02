@@ -1,0 +1,10 @@
+raw_tiffs/
+converted_tiffs/
+segmented_teeth/
+bioencoder_wd/
+temp_input.jpg
+test_output.jpg
+debug_temp.jpg
+__pycache__/
+*.pyc
+.env

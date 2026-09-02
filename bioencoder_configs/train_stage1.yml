@@ -1,0 +1,51 @@
+model:
+  backbone: timm_resnet50 # model architecture and pre-trained weights to use - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#models
+  num_classes: # No classes in first stage
+
+train:
+  n_epochs: &epochs 50 # Number of training epochs
+  amp: True # Enable Automatic Mixed Precision (AMP) for faster training on compatible GPUs
+  ema: True # Use Exponential Moving Average to stabilize training
+  ema_decay_per_epoch: 0.4 # EMA decay rate; adjust based on dataset size
+  target_metric: loss # Metric to optimize during training
+  stage: first # Training stage: 'first' for SupCon, 'second' for fine-tuning classification
+
+dataloaders:
+  train_batch_size: 4 # Batch size for training data
+  valid_batch_size: 4 # Batch size for validation data
+  num_workers: 0 # Number of CPU threads for data loading
+
+optimizer:
+  name: SGD # Optimizer type - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#optimizers
+  params:
+    lr: 0.003 # Learning rate
+
+scheduler:
+  name: CosineAnnealingLR # Learning rate scheduler - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#schedulers
+  params:
+    T_max: *epochs # Maximum number of iterations
+    eta_min: 0.0003 # Minimum learning rate
+
+criterion:
+  name: 'SupCon' # Loss function - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#losses
+  params:
+    temperature: 0.1 # Temperature parameter for contrastive loss
+
+img_size: &size 224  # Image size for training and validation
+
+augmentations: # augmentations to be applied - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#augmentations
+  sample_save: True # Whether to save a sample of augmented images
+  sample_n: 10 # Number of augmented image samples per class to save
+  sample_seed: 42 # Seed for random sample
+  transforms: 
+    - RandomResizedCrop: # Randomly resize and crop the image
+        height: 224
+        width: 224
+        scale:  !!python/tuple [0.7,1]
+    - Flip: # Randomly flip the image horizontally
+    - RandomRotate90: # Randomly rotate the image by 90 degrees
+    - MedianBlur: # Apply median blur with a probability
+    - ShiftScaleRotate: # Randomly apply affine transformations
+    - OpticalDistortion: # Apply optical distortion to the image
+    - GridDistortion: # Apply grid distortion to the image
+    - HueSaturationValue: # Randomly change hue, saturation, and value of the image

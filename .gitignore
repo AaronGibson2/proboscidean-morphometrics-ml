@@ -2,6 +2,7 @@ raw_tiffs/
 converted_tiffs/
 segmented_teeth_lower/
 segmented_teeth_upper/
+segmented_teeth/
 bioencoder_wd/
 temp_input.jpg
 test_output.jpg

@@ -7,8 +7,8 @@ train:
   stage: first # Training stage: 'first' for SupCon, 'second' for fine-tuning classification
 
 dataloaders:
-  train_batch_size: 40 # Batch size for training data
-  valid_batch_size: 40 # Batch size for validation data
+  train_batch_size: 4
+  valid_batch_size: 1
   num_workers: 0 # Number of CPU threads for data loading
 
-img_size: 384 # Image size for training and validation
+img_size: 224 # Must match stage-one training

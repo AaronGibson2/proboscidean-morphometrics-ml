@@ -1,5 +1,5 @@
 model:
   backbone: timm_resnet50 # Model architecture and pre-trained weights to use
   stage: second # Training stage: 'first' for embeddings, 'second' for classification
-  num_classes: 4 # Number of output classes for classification
+  num_classes: 3
 

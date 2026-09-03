@@ -1,15 +1,15 @@
 model:
   backbone: timm_resnet50 # Model architecture and pre-trained weights to use
   top_k_checkpoints: 3 # Number of best model checkpoints to save based on validation metric
-  num_classes: 4 # Number of output classes for classification
+  num_classes: 3
 
 train:
   amp: True # Enable Automatic Mixed Precision (AMP) for faster training on compatible GPUs
   stage: second # Training stage: 'first' for SupCon, 'second' for fine-tuning classification
 
 dataloaders:
-  train_batch_size: 40 # Batch size for training data
-  valid_batch_size: 40 # Batch size for validation data
+  train_batch_size: 4
+  valid_batch_size: 1
   num_workers: 0 # Number of CPU threads for data loading
 
-img_size: 384 # Image size for training and validation
+img_size: 224

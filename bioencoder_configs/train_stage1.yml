@@ -7,12 +7,12 @@ train:
   amp: True # Enable Automatic Mixed Precision (AMP) for faster training on compatible GPUs
   ema: True # Use Exponential Moving Average to stabilize training
   ema_decay_per_epoch: 0.4 # EMA decay rate; adjust based on dataset size
-  target_metric: loss # Metric to optimize during training
+  target_metric: precision_at_1 # Available stage-one retrieval metric in BioEncoder 1.0.5
   stage: first # Training stage: 'first' for SupCon, 'second' for fine-tuning classification
 
 dataloaders:
   train_batch_size: 4 # Batch size for training data
-  valid_batch_size: 4 # Batch size for validation data
+  valid_batch_size: 1 # Tiny classes yield one validation image each
   num_workers: 0 # Number of CPU threads for data loading
 
 optimizer:
@@ -44,8 +44,4 @@ augmentations: # augmentations to be applied - see https://github.com/agporto/Bi
         scale:  !!python/tuple [0.7,1]
     - Flip: # Randomly flip the image horizontally
     - RandomRotate90: # Randomly rotate the image by 90 degrees
-    - MedianBlur: # Apply median blur with a probability
-    - ShiftScaleRotate: # Randomly apply affine transformations
-    - OpticalDistortion: # Apply optical distortion to the image
-    - GridDistortion: # Apply grid distortion to the image
-    - HueSaturationValue: # Randomly change hue, saturation, and value of the image
+    - ShiftScaleRotate: # Modest pose invariance without deforming tooth morphology

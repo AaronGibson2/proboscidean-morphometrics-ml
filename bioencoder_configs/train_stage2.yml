@@ -1,6 +1,6 @@
 model:
   backbone: timm_resnet50 # model architecture and pre-trained weights to use - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#models
-  num_classes: 4 # Number of output classes for classification
+  num_classes: 3
 
 train:
   n_epochs: &epochs 30 # Number of training epochs
@@ -11,14 +11,14 @@ train:
   stage: second # Training stage: 'first' for SupCon, 'second' for fine-tuning classification
 
 dataloaders:
-  train_batch_size: 40 # Batch size for training data
-  valid_batch_size: 40 # Batch size for validation data
+  train_batch_size: 4
+  valid_batch_size: 1
   num_workers: 0 # Number of CPU threads for data loading
 
 optimizer:
   name: SGD # Optimizer type - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#optimizers
   params:
-    lr: 0.3 # Learning rate
+    lr: 0.003
 
 scheduler:
   name: CosineAnnealingLR # Learning rate scheduler - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#schedulers
@@ -29,10 +29,10 @@ scheduler:
 criterion:
   name: 'LabelSmoothing' # Loss function - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#losses
   params:
-    classes: 100 # Number of classes (adjust based on actual number of classes)
+    classes: 3
     smoothing: 0.01 # Smoothing factor for label smoothing
 
-img_size: &size 384  # Image size for training and validation
+img_size: &size 224
 
 augmentations: # augmentations to be applied - see https://github.com/agporto/BioEncoder/blob/main/help/05-options.md#augmentations
   sample_save: True # Whether to save a sample of augmented images
@@ -45,9 +45,5 @@ augmentations: # augmentations to be applied - see https://github.com/agporto/Bi
         scale:  !!python/tuple [0.7,1]
     - Flip: # Randomly flip the image horizontally
     - RandomRotate90: # Randomly rotate the image by 90 degrees
-    - MedianBlur: # Apply median blur with a probability
-    - ShiftScaleRotate: # Randomly apply affine transformations
-    - OpticalDistortion: # Apply optical distortion to the image
-    - GridDistortion: # Apply grid distortion to the image
-    - HueSaturationValue: # Randomly change hue, saturation, and value of the image
+    - ShiftScaleRotate: # Modest pose invariance without deforming tooth morphology
 

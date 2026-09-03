@@ -1,153 +1,162 @@
+"""Isolate tooth foregrounds and write cropped PNGs plus visual QC images."""
+
+from __future__ import annotations
+
+import argparse
 import os
-os.environ["ROBOFLOW_API_KEY"] = "REVOKED_ROBOFLOW_KEY"
-
+import tempfile
 from pathlib import Path
-from autodistill_sam3 import SegmentAnything3
-from autodistill.detection import CaptionOntology
-import tifffile
-import numpy as np
+
 import cv2
-import torch
-import gc
+import numpy as np
+import tifffile
 
-INPUT_DIR = "../converted_tiffs"
-OUTPUT_DIR = "../segmented_teeth"
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+from pipeline_utils import PREPROCESSED_DIR, SEGMENTED_DIR, image_files, write_json
 
-PROMPTS = ["fossil tooth", "tooth", "molar", "fossil"]
-SAM_WIDTHS = [1280, 800, 640]
 
-def normalize_image(img):
-    if img.dtype == np.uint8:
-        return img
-    img_float = img.astype(np.float32)
-    img_out = np.zeros_like(img_float)
-    for c in range(img.shape[2] if len(img.shape) == 3 else 1):
-        channel = img_float[:,:,c]
-        cmin, cmax = channel.min(), channel.max()
-        if cmax > cmin:
-            img_out[:,:,c] = ((channel - cmin) / (cmax - cmin) * 255)
-        else:
-            img_out[:,:,c] = 0
-    return img_out.astype(np.uint8)
+def to_uint8(image: np.ndarray) -> np.ndarray:
+    image = np.asarray(image)
+    if image.ndim == 2:
+        image = np.repeat(image[..., None], 3, axis=2)
+    if image.shape[-1] == 4:
+        image = image[..., :3]
+    values = image.astype(np.float32)
+    finite = np.isfinite(values)
+    if not finite.any():
+        raise ValueError("Image contains no finite values")
+    low, high = np.percentile(values[finite], (0.5, 99.5))
+    if high <= low:
+        return np.zeros(values.shape, dtype=np.uint8)
+    return np.clip((values - low) / (high - low) * 255, 0, 255).astype(np.uint8)
 
-def try_predict(temp_path, prompt):
-    model = SegmentAnything3(ontology=CaptionOntology({prompt: "tooth"}))
-    preds = model.predict(temp_path)
-    del model
-    torch.cuda.empty_cache()
-    gc.collect()
-    return preds
 
-def contour_crop(img, pad=200):
-    """Fallback: find largest bright object on black background"""
-    gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-    # Blur to ignore small specks
-    blur = cv2.GaussianBlur(gray, (21, 21), 0)
-    # Threshold — tooth is bright, background is black
-    _, thresh = cv2.threshold(blur, 30, 255, cv2.THRESH_BINARY)
-    # Find contours
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, 
-                                    cv2.CHAIN_APPROX_SIMPLE)
-    if not contours:
-        return None
-    # Get bounding box of largest contour
-    largest = max(contours, key=cv2.contourArea)
-    x, y, w, h = cv2.boundingRect(largest)
-    orig_h, orig_w = img.shape[:2]
-    x1 = max(0, x - pad)
-    y1 = max(0, y - pad)
-    x2 = min(orig_w, x + w + pad)
-    y2 = min(orig_h, y + h + pad)
-    return img[y1:y2, x1:x2]
-
-files = list(Path(INPUT_DIR).glob("*.tiff")) + list(Path(INPUT_DIR).glob("*.TIF"))
-print(f"Found {len(files)} images\n")
-
-skipped = []
-
-for img_path in sorted(files):
-    print(f"Processing {img_path.name}...")
-    
-    try:
-        img = tifffile.imread(str(img_path))
-        img = normalize_image(img)
-        orig_h, orig_w = img.shape[:2]
-        
-        # --- Try SAM3 first ---
-        predictions = None
-        used_prompt = None
-        used_scale = None
-
-        for sam_width in SAM_WIDTHS:
-            scale = sam_width / orig_w
-            small_h = int(orig_h * scale)
-            img_small = cv2.resize(img, (sam_width, small_h))
-            temp_path = "../temp_input.jpg"
-            cv2.imwrite(temp_path, cv2.cvtColor(img_small, cv2.COLOR_RGB2BGR))
-            
-            for prompt in PROMPTS:
-                preds = try_predict(temp_path, prompt)
-                if len(preds) > 0:
-                    predictions = preds
-                    used_prompt = prompt
-                    used_scale = scale
-                    break
-            if predictions is not None:
-                break
-        
-        if predictions is not None:
-            # SAM3 worked — use mask or xyxy
-            if predictions.mask is not None and len(predictions.mask) > 0:
-                combined_mask = np.zeros((int(orig_h * used_scale),
-                                          int(orig_w * used_scale)), dtype=bool)
-                for mask in predictions.mask:
-                    combined_mask = combined_mask | mask
-                rows = np.any(combined_mask, axis=1)
-                cols = np.any(combined_mask, axis=0)
-                y1, y2 = np.where(rows)[0][[0, -1]]
-                x1, x2 = np.where(cols)[0][[0, -1]]
-                x1 = int(x1 / used_scale)
-                y1 = int(y1 / used_scale)
-                x2 = int(x2 / used_scale)
-                y2 = int(y2 / used_scale)
-            else:
-                x1 = int(predictions.xyxy[:, 0].min() / used_scale)
-                y1 = int(predictions.xyxy[:, 1].min() / used_scale)
-                x2 = int(predictions.xyxy[:, 2].max() / used_scale)
-                y2 = int(predictions.xyxy[:, 3].max() / used_scale)
-            
-            pad = 200
-            x1 = max(0, x1 - pad)
-            y1 = max(0, y1 - pad)
-            x2 = min(orig_w, x2 + pad)
-            y2 = min(orig_h, y2 + pad)
-            cropped = img[y1:y2, x1:x2]
-            method = f"SAM3 ('{used_prompt}')"
-        
-        else:
-            # SAM3 failed — fallback to contour detection
-            print(f"  SAM3 failed — trying contour fallback...")
-            cropped = contour_crop(img)
-            if cropped is None:
-                print(f"  ⚠️  Both methods failed — skipping")
-                skipped.append(img_path.name)
+def contour_mask(image: np.ndarray) -> np.ndarray | None:
+    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    blurred = cv2.GaussianBlur(gray, (21, 21), 0)
+    masks = []
+    for polarity in (cv2.THRESH_BINARY, cv2.THRESH_BINARY_INV):
+        _, threshold = cv2.threshold(blurred, 0, 255, polarity + cv2.THRESH_OTSU)
+        count, labels, stats, _ = cv2.connectedComponentsWithStats(threshold, connectivity=8)
+        height, width = gray.shape
+        for index in range(1, count):
+            x, y, box_width, box_height, area = stats[index]
+            fraction = area / (height * width)
+            if not 0.01 <= fraction <= 0.85:
                 continue
-            method = "contour fallback"
-        
-        out_path = os.path.join(OUTPUT_DIR, img_path.stem + ".jpg")
-        cv2.imwrite(out_path, cv2.cvtColor(cropped, cv2.COLOR_RGB2BGR))
-        print(f"  ✅ Saved ({cropped.shape[1]}x{cropped.shape[0]}px) via {method}")
-    
-    except Exception as e:
-        print(f"  ❌ Error: {e}")
-        torch.cuda.empty_cache()
-        gc.collect()
-        skipped.append(img_path.name)
-        continue
+            borders = sum((x == 0, y == 0, x + box_width >= width, y + box_height >= height))
+            masks.append((area / (1 + 4 * borders), labels == index))
+    if not masks:
+        return None
+    _, mask = max(masks, key=lambda candidate: candidate[0])
+    kernel = np.ones((11, 11), np.uint8)
+    return cv2.morphologyEx(mask.astype(np.uint8), cv2.MORPH_CLOSE, kernel).astype(bool)
 
-if os.path.exists("../temp_input.jpg"):
-    os.remove("../temp_input.jpg")
 
-print(f"\nDone!")
-print(f"Skipped {len(skipped)}: {skipped}")
+def sam_mask(model: object, image: np.ndarray, temp_dir: Path, width: int) -> np.ndarray | None:
+    height, original_width = image.shape[:2]
+    scale = min(1.0, width / original_width)
+    resized = cv2.resize(image, (round(original_width * scale), round(height * scale)))
+    temp_path = temp_dir / "sam_input.jpg"
+    cv2.imwrite(str(temp_path), cv2.cvtColor(resized, cv2.COLOR_RGB2BGR))
+    predictions = model.predict(str(temp_path))
+    masks = getattr(predictions, "mask", None)
+    if masks is None or len(masks) == 0:
+        return None
+    masks = np.asarray(masks, dtype=bool)
+    largest = masks[np.argmax(masks.sum(axis=(1, 2)))].astype(np.uint8)
+    return cv2.resize(largest, (original_width, height), interpolation=cv2.INTER_NEAREST).astype(bool)
+
+
+def crop_to_mask(image: np.ndarray, mask: np.ndarray, padding: int) -> tuple[np.ndarray, tuple[int, int, int, int]]:
+    rows, columns = np.where(mask)
+    if not len(rows):
+        raise ValueError("Empty foreground mask")
+    height, width = image.shape[:2]
+    x1, x2 = max(0, int(columns.min()) - padding), min(width, int(columns.max()) + padding + 1)
+    y1, y2 = max(0, int(rows.min()) - padding), min(height, int(rows.max()) + padding + 1)
+    masked = image.copy()
+    masked[~mask] = 0
+    return masked[y1:y2, x1:x2], (x1, y1, x2, y2)
+
+
+def build_sam_model(prompt: str) -> object:
+    if not os.environ.get("ROBOFLOW_API_KEY"):
+        raise RuntimeError("Set ROBOFLOW_API_KEY in the environment before using SAM3")
+    from autodistill.detection import CaptionOntology
+    from autodistill_sam3 import SegmentAnything3
+    return SegmentAnything3(ontology=CaptionOntology({prompt: "tooth"}))
+
+
+def segment(input_dir: Path, output_dir: Path, method: str, prompt: str, padding: int,
+            sam_width: int, overwrite: bool) -> dict[str, object]:
+    files = list(image_files(input_dir, {".tif", ".tiff"}))
+    if not files:
+        raise FileNotFoundError(f"No TIFF images found below {input_dir}")
+    model = None
+    if method in {"sam3", "auto"} and os.environ.get("ROBOFLOW_API_KEY"):
+        try:
+            model = build_sam_model(prompt)
+        except Exception:
+            if method == "sam3":
+                raise
+            print("SAM3 could not initialize; continuing with contour segmentation")
+    if method == "sam3" and model is None:
+        raise RuntimeError("SAM3 requested but ROBOFLOW_API_KEY is not set")
+
+    qc_dir = output_dir.parent / "qc" / output_dir.name
+    results = []
+    with tempfile.TemporaryDirectory(prefix="proboscidean_sam_") as temp:
+        for source in files:
+            relative = source.relative_to(input_dir).with_suffix(".png")
+            destination = output_dir / relative
+            if destination.exists() and not overwrite:
+                results.append({"source": str(source), "output": str(destination), "status": "skipped"})
+                continue
+            try:
+                image = to_uint8(tifffile.imread(source))
+                mask, used = None, None
+                if model is not None:
+                    mask = sam_mask(model, image, Path(temp), sam_width)
+                    used = "sam3" if mask is not None else None
+                if mask is None and method in {"contour", "auto"}:
+                    mask, used = contour_mask(image), "contour"
+                if mask is None:
+                    raise RuntimeError("No foreground detected")
+                cropped, box = crop_to_mask(image, mask, padding)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                cv2.imwrite(str(destination), cv2.cvtColor(cropped, cv2.COLOR_RGB2BGR))
+                qc = image.copy()
+                cv2.rectangle(qc, box[:2], box[2:], (255, 0, 255), max(2, image.shape[1] // 500))
+                qc_path = (qc_dir / relative).with_suffix(".jpg")
+                qc_path.parent.mkdir(parents=True, exist_ok=True)
+                cv2.imwrite(str(qc_path), cv2.cvtColor(qc, cv2.COLOR_RGB2BGR))
+                results.append({"source": str(source), "output": str(destination), "status": "ok",
+                                "method": used, "box": box, "foreground_fraction": float(mask.mean())})
+                print(f"segmented ({used}): {source.relative_to(input_dir)}")
+            except Exception as exc:
+                results.append({"source": str(source), "status": "failed", "error": str(exc)})
+                print(f"failed: {source.name}: {exc}")
+    report = {"method": method, "prompt": prompt, "padding": padding, "images": results}
+    write_json(output_dir / "segmentation_report.json", report)
+    return report
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input", type=Path, default=PREPROCESSED_DIR)
+    parser.add_argument("--output", type=Path, default=SEGMENTED_DIR)
+    parser.add_argument("--method", choices=("contour", "sam3", "auto"), default="contour")
+    parser.add_argument("--prompt", default="fossil molar tooth")
+    parser.add_argument("--padding", type=int, default=200)
+    parser.add_argument("--sam-width", type=int, default=1280)
+    parser.add_argument("--overwrite", action="store_true")
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    report = segment(args.input, args.output, args.method, args.prompt, args.padding,
+                     args.sam_width, args.overwrite)
+    counts = {status: sum(item["status"] == status for item in report["images"])
+              for status in ("ok", "skipped", "failed")}
+    print("Done:", counts)

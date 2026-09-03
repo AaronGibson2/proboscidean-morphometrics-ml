@@ -4,13 +4,13 @@ model:
   stage: first # Training stage: 'first' for initial training, 'second' for fine-tuning
 
 dataloaders:
-  train_batch_size: 20 # Larger is faster; no value or removing this line will not include training data
-  valid_batch_size: 20 # Larger is faster; val data is always plotted
+  train_batch_size: 4
+  valid_batch_size: 1 # The rarest class has one validation image
   num_workers: 0 # Should not exceed available CPU cores
 
-img_size: 384 # image size used for training
+img_size: 224 # Must match training
 
-perplexity: 30 # for tSNE<; cannot be larger than dataset
+perplexity: 5 # Must be smaller than this small dataset
 
 plot_style: 2 # (1: pictogram above point, 2: pictogram next to plot panel)
 point_size: 10  ## size of points in scatter plot
@@ -19,6 +19,6 @@ color_map: 'Set1' # Default color map; see https://matplotlib.org/stable/users/e
   #class1: "#FFD467"
   #class2: "#4DC9F2"
 
-return_results: False
+return_results: True
 
   

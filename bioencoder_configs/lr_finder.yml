@@ -1,11 +1,11 @@
 model:
-  backbone: timm_tf_efficientnet_b5.ns_jft_in1k # Model architecture and pre-trained weights to use
-  num_classes: 4 # Number of output classes for classification
+  backbone: timm_resnet50 # Must match stage-one training
+  num_classes: 3
 
 dataloaders:
-  train_batch_size: 50 # Batch size for training data; larger sizes utilize GPU memory better
-  valid_batch_size: 50 # Batch size for validation data
-  num_workers: 32 # Number of CPU threads for data loading; set to the number of CPU cores available
+  train_batch_size: 4
+  valid_batch_size: 4
+  num_workers: 0
 
 optimizer:
   name: SGD # Optimizer type

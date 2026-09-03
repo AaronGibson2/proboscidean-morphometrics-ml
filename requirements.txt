@@ -1,0 +1,15 @@
+numpy>=1.26,<3
+Pillow>=10,<13
+rawpy>=0.21,<1
+tifffile>=2024.1
+opencv-python>=4.9,<5
+imagecodecs>=2024.1
+scikit-learn>=1.4,<2
+bokeh>=3.4,<4
+torch>=2.2
+torchvision>=0.17
+bioencoder==1.0.5
+
+# Optional SAM3 segmentation dependencies:
+# autodistill
+# autodistill-sam3

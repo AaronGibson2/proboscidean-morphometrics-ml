@@ -72,7 +72,7 @@ python scripts/01_convert_nefs.py
 python scripts/02_build_manifest.py
 python scripts/03_segment_all.py --method contour
 python scripts/02_build_manifest.py --images data/segmented
-python scripts/04_standardize_images.py --images data/segmented/Upper --dataset-name upper_m3
+python scripts/04_standardize_images.py --input data/segmented/upper_m3 --output data/standardized/upper_m3 --curation metadata/upper_m3_image_qc.csv
 python scripts/05_train_bioencoder.py --images data/standardized/upper_m3/rgb --run-name upper_m3_rgb_v1
 python scripts/06_plot_embeddings.py --run-name upper_m3_rgb_v1
 ```
@@ -80,7 +80,7 @@ python scripts/06_plot_embeddings.py --run-name upper_m3_rgb_v1
 To rerun the existing lower-M3 experiment without reconverting or resegmenting images:
 
 ```powershell
-python scripts/04_standardize_images.py --images data/segmented/lower_m3 --dataset-name lower_m3
+python scripts/04_standardize_images.py --input data/segmented/lower_m3 --output data/standardized/lower_m3
 python scripts/05_train_bioencoder.py --images data/standardized/lower_m3/rgb --allow-image-level-split --run-name lower_m3_rgb_v1
 python scripts/06_plot_embeddings.py --run-name lower_m3_rgb_v1
 ```
@@ -130,6 +130,16 @@ worse (-0.310). All values remain negative, so none of these runs shows convinci
 separation. The next defensible step is to add substantially more independent specimens per
 site, process upper and lower molars separately, and then use specimen-grouped repeated
 cross-validation with permutation testing and confidence intervals.
+
+## Current upper-M3 pilot result
+
+Strict quality control retained 17 images: 12 Love Bone Bed specimens, three Mixson's Bone
+Bed specimens, and two contralateral teeth belonging to one Tyner Farm specimen. Standardized
+RGB embeddings produced silhouette scores of 0.193 in PCA and 0.070 in t-SNE; grayscale
+produced 0.150 and 0.107, respectively. The positive overall scores are driven primarily by
+the close Tyner pair. Because those points are two teeth from one individual rather than two
+independent specimens, this is an exploratory observation rather than evidence for locality
+classification. Mixson's specimens remain dispersed in both controls.
 
 ## Tests
 

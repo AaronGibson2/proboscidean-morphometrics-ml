@@ -18,3 +18,11 @@ Required before inferential analysis:
 
 The automatically generated image manifest links files to inferred specimen IDs. Review it
 against this table; filenames are not authoritative metadata.
+
+`image_qc.csv` and tooth-position-specific equivalents such as `upper_m3_image_qc.csv`
+record image-level inclusion decisions made before standardization and training. Every
+exclusion should include a reason.
+
+`segmentation_overrides.csv` records pixel-coordinate crop boxes for photographs where
+automatic foreground selection fails. Coordinates refer to the converted TIFF so manual
+corrections remain reproducible.

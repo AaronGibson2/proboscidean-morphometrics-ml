@@ -45,6 +45,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--allow-image-level-split", action="store_true",
                         help="Acknowledge possible specimen leakage in BioEncoder's splitter")
+    parser.add_argument("--allow-single-specimen-class", action="store_true",
+                        help="Allow an exploratory run when a site has fewer than two specimens")
     return parser.parse_args()
 
 
@@ -53,7 +55,21 @@ if __name__ == "__main__":
         sys.stdout.reconfigure(encoding="utf-8")
         sys.stderr.reconfigure(encoding="utf-8")
     args = parse_args()
-    summary = validate_dataset(args.images)
+    try:
+        summary = validate_dataset(args.images)
+    except ValueError as exc:
+        if not args.allow_single_specimen_class or "Every class needs at least two specimens" not in str(exc):
+            raise
+        # Recompute the summary without relaxing validate_dataset's default scientific safeguard.
+        summary = {}
+        for class_dir in sorted(path for path in args.images.iterdir() if path.is_dir()):
+            files = list(image_files(class_dir))
+            if files:
+                summary[class_dir.name] = {
+                    "images": len(files),
+                    "specimens": len({infer_specimen_id(path.name) for path in files}),
+                }
+        print("WARNING: a class has only one independent specimen; this run is exploratory only.")
     print("Dataset:", summary)
     repeated = Counter(infer_specimen_id(path.name) for path in image_files(args.images))
     repeated = {name: count for name, count in repeated.items() if count > 1}

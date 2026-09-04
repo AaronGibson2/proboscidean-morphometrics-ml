@@ -1,0 +1,23 @@
+image_path,status,reason
+Love Bone Bed Upper M3/UF-276840-01-LUM3.png,include,occlusal crown visible
+Love Bone Bed Upper M3/UF-38231-01-RUM3.png,include,occlusal crown visible with matrix
+Love Bone Bed Upper M3/UF-38232-01-RUM3.png,include,occlusal crown visible
+Love Bone Bed Upper M3/UF-38233-01-LUM3.png,include,occlusal crown visible
+Love Bone Bed Upper M3/UF-38234-01-LUM3.png,include,occlusal crown visible
+Love Bone Bed Upper M3/UF-38235-01-LUM3.png,include,occlusal crown visible
+Love Bone Bed Upper M3/UF-38236-01-RUM3.png,exclude,severely fragmented crown is not comparable to complete M3 outlines
+Love Bone Bed Upper M3/UF-38237-01-LUM3.png,include,occlusal crown visible
+Love Bone Bed Upper M3/UF-38238-01-RUM3.png,exclude,severely fragmented crown is not comparable to complete M3 outlines
+Love Bone Bed Upper M3/UF-38239-01-LUM3.png,include,occlusal crown visible
+Love Bone Bed Upper M3/UF-38240-03-RUM3.png,include,occlusal crown visible with matrix
+Love Bone Bed Upper M3/UF-38243-01-RUM3.png,include,occlusal crown visible
+Love Bone Bed Upper M3/UF-38244-01-RUM3.png,include,occlusal crown visible but dark exposure
+Love Bone Bed Upper M3/UF-38247-01-LUM3.png,exclude,yellow backing remains attached to crop and clean contralateral view exists
+Love Bone Bed Upper M3/UF-38247-01-RUM3.png,include,occlusal crown visible
+Love Bone Bed Upper M3/UF-38252-01-UM3.png,exclude,multiple teeth in jaw and labels prevent isolated-M3 analysis
+Mixson's Bone Bed/USNM-3080-01-RUM3.png,include,occlusal crown visible
+Mixson's Bone Bed/USNM-3084-01-RUM3.png,include,occlusal crown visible
+Mixson's Bone Bed/USNM-3085-01-LUM3.png,include,occlusal crown visible
+Mixson's Bone Bed/USNM-3097-01-LUM3.png,exclude,severely fragmented crown is not comparable to complete M3 outlines
+Tyner Farm/UF-212305-01-LUM3.png,include,occlusal crown visible
+Tyner Farm/UF-212305-01-RUM3.png,include,occlusal crown visible

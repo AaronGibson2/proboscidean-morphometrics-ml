@@ -135,11 +135,12 @@ cross-validation with permutation testing and confidence intervals.
 
 Strict quality control retained 17 images: 12 Love Bone Bed specimens, three Mixson's Bone
 Bed specimens, and two contralateral teeth belonging to one Tyner Farm specimen. Standardized
-RGB embeddings produced silhouette scores of 0.193 in PCA and 0.070 in t-SNE; grayscale
-produced 0.150 and 0.107, respectively. The positive overall scores are driven primarily by
-the close Tyner pair. Because those points are two teeth from one individual rather than two
-independent specimens, this is an exploratory observation rather than evidence for locality
-classification. Mixson's specimens remain dispersed in both controls.
+After preserving dark crown features inside the segmentation silhouette, RGB embeddings
+produced silhouette scores of 0.024 in PCA and 0.077 in t-SNE; grayscale produced -0.045
+and 0.048, respectively. The mildly positive t-SNE scores are driven primarily by the close
+Tyner pair. Because those points are two teeth from one individual rather than two independent
+specimens, this is an exploratory observation rather than evidence for locality classification.
+Mixson's specimens remain sensitive to the projection and preprocessing choice.
 
 ## Tests
 

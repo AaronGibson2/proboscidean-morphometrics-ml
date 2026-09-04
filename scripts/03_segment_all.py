@@ -67,7 +67,18 @@ def contour_mask(image: np.ndarray) -> np.ndarray | None:
         return None
     _, mask = max(masks, key=lambda candidate: candidate[0])
     kernel = np.ones((11, 11), np.uint8)
-    return cv2.morphologyEx(mask.astype(np.uint8), cv2.MORPH_CLOSE, kernel).astype(bool)
+    mask = cv2.morphologyEx(mask.astype(np.uint8), cv2.MORPH_CLOSE, kernel)
+
+    # Thresholding often labels dark enamel valleys, cracks, and missing cusps as
+    # background. Those pixels are still biologically meaningful and must not be
+    # erased. Fill only the selected component's external silhouette so the crop
+    # retains the original photograph everywhere inside the tooth outline.
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    if not contours:
+        return None
+    filled = np.zeros_like(mask)
+    cv2.drawContours(filled, [max(contours, key=cv2.contourArea)], -1, 1, cv2.FILLED)
+    return filled.astype(bool)
 
 
 def sam_mask(model: object, image: np.ndarray, temp_dir: Path, width: int) -> np.ndarray | None:

@@ -31,6 +31,11 @@ Documentation links are pinned to the completed experiment revision so they work
 
 ## Latest results
 
+An additional [provisional Love versus Mixson + Tyner comparison](docs/dinov3-group-hypothesis-results.md)
+uses the same cached features to explore a literature-motivated grouping. Specimen-level taxon
+assignments remain unconfirmed. No condition survives correction across its eight comparisons;
+this is a separate exploratory question, not verified species identification.
+
 The primary metric is **macro locality recall**: average nearest-neighbor recall across localities with an independent same-site reference, giving each eligible locality equal weight.
 
 | Dataset | 224px macro recall | 512px macro recall | Constant-majority macro baseline |

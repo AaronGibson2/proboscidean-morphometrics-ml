@@ -1,0 +1,1179 @@
+{
+  "created": "2026-09-23",
+  "source_code_commit": "c17e9a11754cea317475e400feb984d2263bf032",
+  "note": "Numerical source snapshots for 24 conditions; these reuse the same photographs, not independent replications. Source outputs are local and gitignored. Hashes identify the original JSON files. No source images or feature vectors included.",
+  "sources": {
+    "outputs/dinov3/upper_rgb_224/analysis/summary.json": {
+      "sha256": "563b5f2d84f28294aaa1594610151ed1d43fe092280ddf0366051a73d6e5e9a9",
+      "data": {
+        "within_site_mean_cosine": 0.6785276251426642,
+        "between_site_mean_cosine": 0.6809041500091553,
+        "within_minus_between": -0.002376524866491092,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.4998,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 15,
+          "unsupported_specimens": [
+            "UF-212305"
+          ],
+          "accuracy_eligible_only": 0.7333333333333333,
+          "per_site": {
+            "Love Bone Bed Upper M3": {
+              "specimens": 12,
+              "accuracy": 0.75
+            },
+            "Mixson's Bone Bed": {
+              "specimens": 3,
+              "accuracy": 0.6666666666666666
+            },
+            "Tyner Farm": {
+              "specimens": 1,
+              "accuracy": null
+            }
+          }
+        },
+        "images": 17,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "1458fa393e1052e1e4ec216f1cf13565c949e5172da28d778d9eb4aae80d26df",
+        "specimen_aggregation": "Mean of normalized image CLS vectors, then L2 normalization",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.22879205644130707,
+          0.12615013122558594
+        ]
+      }
+    },
+    "outputs/dinov3/upper_grayscale_224/analysis/summary.json": {
+      "sha256": "4818ad2d2d05e8cde8f23bfbdb20fac790bfc68b4225b7b69f174fde02f26f92",
+      "data": {
+        "within_site_mean_cosine": 0.6304576707922894,
+        "between_site_mean_cosine": 0.6339293817679087,
+        "within_minus_between": -0.0034717109756192688,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.5056,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 15,
+          "unsupported_specimens": [
+            "UF-212305"
+          ],
+          "accuracy_eligible_only": 0.5333333333333333,
+          "per_site": {
+            "Love Bone Bed Upper M3": {
+              "specimens": 12,
+              "accuracy": 0.6666666666666666
+            },
+            "Mixson's Bone Bed": {
+              "specimens": 3,
+              "accuracy": 0.0
+            },
+            "Tyner Farm": {
+              "specimens": 1,
+              "accuracy": null
+            }
+          }
+        },
+        "images": 17,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "6854ae552f2e2c6ff3d09c4fef440ba55b6234e07cbb1a7ea39fc18a888bd14d",
+        "specimen_aggregation": "Mean of normalized image CLS vectors, then L2 normalization",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.21736714243888855,
+          0.13274993002414703
+        ]
+      }
+    },
+    "outputs/dinov3/lower_rgb_224/analysis/summary.json": {
+      "sha256": "0bf3ca7e94a11643a4737b82a96f1bcb147544edf1877f8b784e010fbfff63d1",
+      "data": {
+        "within_site_mean_cosine": 0.7420043375562219,
+        "between_site_mean_cosine": 0.7325277030467987,
+        "within_minus_between": 0.009476634509423154,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.3089,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 16,
+          "unsupported_specimens": [],
+          "accuracy_eligible_only": 0.75,
+          "per_site": {
+            "Love_Bone_Bed": {
+              "specimens": 12,
+              "accuracy": 0.9166666666666666
+            },
+            "Mixsons_Bone_Bed": {
+              "specimens": 2,
+              "accuracy": 0.0
+            },
+            "Tyner_Farm": {
+              "specimens": 2,
+              "accuracy": 0.5
+            }
+          }
+        },
+        "images": 20,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "84ab6f4a0b57bc4035a297ede6dc2ebe9d68577baa109d9cd0a277ef80f5c4c8",
+        "specimen_aggregation": "Mean of normalized image CLS vectors, then L2 normalization",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.24872784316539764,
+          0.1157231554389
+        ]
+      }
+    },
+    "outputs/dinov3/lower_grayscale_224/analysis/summary.json": {
+      "sha256": "4f79e1fd1e234bd294a0eda95ddcc587b742009f675a25714619da2b6ad23831",
+      "data": {
+        "within_site_mean_cosine": 0.6626498528263148,
+        "between_site_mean_cosine": 0.691164068877697,
+        "within_minus_between": -0.028514216051382157,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.8078,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 16,
+          "unsupported_specimens": [],
+          "accuracy_eligible_only": 0.625,
+          "per_site": {
+            "Love_Bone_Bed": {
+              "specimens": 12,
+              "accuracy": 0.75
+            },
+            "Mixsons_Bone_Bed": {
+              "specimens": 2,
+              "accuracy": 0.0
+            },
+            "Tyner_Farm": {
+              "specimens": 2,
+              "accuracy": 0.5
+            }
+          }
+        },
+        "images": 20,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "0c97f7d45b4881bc3673a32740fc8fa9714e2907c60cef9e6adb05a53177d4e7",
+        "specimen_aggregation": "Mean of normalized image CLS vectors, then L2 normalization",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.20267844200134277,
+          0.15173062682151794
+        ]
+      }
+    },
+    "outputs/dinov3/upper_rgb_crop_black_v2_224/analysis/summary.json": {
+      "sha256": "3379b09632afa9000c2872dba10f8d473e2aa6043b465b9e7afcf3024b2b1a3a",
+      "data": {
+        "within_site_mean_cosine": 0.7067147778428119,
+        "between_site_mean_cosine": 0.7179817270998862,
+        "within_minus_between": -0.011266949257074277,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.5114,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 15,
+          "unsupported_specimens": [
+            "UF-212305"
+          ],
+          "accuracy_eligible_only": 0.6666666666666666,
+          "per_site": {
+            "Love Bone Bed Upper M3": {
+              "specimens": 12,
+              "accuracy": 0.6666666666666666
+            },
+            "Mixson's Bone Bed": {
+              "specimens": 3,
+              "accuracy": 0.6666666666666666
+            },
+            "Tyner Farm": {
+              "specimens": 1,
+              "accuracy": null
+            }
+          }
+        },
+        "images": 17,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "928e7ccc6a216dadbef32f25ed38c4c0f8be9f09e8f9e85e76b0f886fc222600",
+        "specimen_aggregation": "Mean of normalized image CLS vectors, then L2 normalization",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.26607197523117065,
+          0.1375424563884735
+        ]
+      }
+    },
+    "outputs/dinov3/upper_grayscale_crop_black_v2_224/analysis/summary.json": {
+      "sha256": "73b99d7b80cce596d7a9611fad8cf4c7528a096313f58b497613ac90d62ee54c",
+      "data": {
+        "within_site_mean_cosine": 0.6911629235398942,
+        "between_site_mean_cosine": 0.7113569507411882,
+        "within_minus_between": -0.02019402720129404,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.6151,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 15,
+          "unsupported_specimens": [
+            "UF-212305"
+          ],
+          "accuracy_eligible_only": 0.7333333333333333,
+          "per_site": {
+            "Love Bone Bed Upper M3": {
+              "specimens": 12,
+              "accuracy": 0.75
+            },
+            "Mixson's Bone Bed": {
+              "specimens": 3,
+              "accuracy": 0.6666666666666666
+            },
+            "Tyner Farm": {
+              "specimens": 1,
+              "accuracy": null
+            }
+          }
+        },
+        "images": 17,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "994b5eddf3a6c8c9efd7477ed5ae1251240942eea42b135b280d8cda800eaec4",
+        "specimen_aggregation": "Mean of normalized image CLS vectors, then L2 normalization",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.25407320261001587,
+          0.16137456893920898
+        ]
+      }
+    },
+    "outputs/dinov3/lower_rgb_crop_black_v2_224/analysis/summary.json": {
+      "sha256": "86028258336456d94b3515557f474ff550025231c4363a3f4b906bacc0fd5f5e",
+      "data": {
+        "within_site_mean_cosine": 0.7293840453905218,
+        "between_site_mean_cosine": 0.7391194506333425,
+        "within_minus_between": -0.009735405242820683,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.6885,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 16,
+          "unsupported_specimens": [],
+          "accuracy_eligible_only": 0.6875,
+          "per_site": {
+            "Love_Bone_Bed": {
+              "specimens": 12,
+              "accuracy": 0.8333333333333334
+            },
+            "Mixsons_Bone_Bed": {
+              "specimens": 2,
+              "accuracy": 0.0
+            },
+            "Tyner_Farm": {
+              "specimens": 2,
+              "accuracy": 0.5
+            }
+          }
+        },
+        "images": 20,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "27fcadfe783a17771e7025cdf94b068706c042096c68bca74829158b4a5e0338",
+        "specimen_aggregation": "Mean of normalized image CLS vectors, then L2 normalization",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.2509338855743408,
+          0.13716745376586914
+        ]
+      }
+    },
+    "outputs/dinov3/lower_grayscale_crop_black_v2_224/analysis/summary.json": {
+      "sha256": "92aaef3c28c7852c7179e2d7e9c4fa3cd3237e94dcd27dd8ec2abe8c2200f73d",
+      "data": {
+        "within_site_mean_cosine": 0.6686040101682439,
+        "between_site_mean_cosine": 0.7024824315538774,
+        "within_minus_between": -0.03387842138563346,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.8347,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 16,
+          "unsupported_specimens": [],
+          "accuracy_eligible_only": 0.6875,
+          "per_site": {
+            "Love_Bone_Bed": {
+              "specimens": 12,
+              "accuracy": 0.8333333333333334
+            },
+            "Mixsons_Bone_Bed": {
+              "specimens": 2,
+              "accuracy": 0.0
+            },
+            "Tyner_Farm": {
+              "specimens": 2,
+              "accuracy": 0.5
+            }
+          }
+        },
+        "images": 20,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "d793dfcfed3d47ed27248fa866847202352d57c6042708076d16f147ce5399e8",
+        "specimen_aggregation": "Mean of normalized image CLS vectors, then L2 normalization",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.23011080920696259,
+          0.15810537338256836
+        ]
+      }
+    },
+    "outputs/dinov3_crown_v1/comparison.json": {
+      "sha256": "ea098652a649e97234d1279e09e63f45d0d0db765501205d5668894ae170e56f",
+      "data": [
+        {
+          "run": "upper_cls_224",
+          "position": "upper",
+          "feature": "cls",
+          "size": 224,
+          "macro_recall": 0.6666666666666666,
+          "per_site": {
+            "Love Bone Bed Upper M3": 0.6666666666666666,
+            "Mixson's Bone Bed": 0.6666666666666666
+          },
+          "supported_sites": [
+            "Love Bone Bed Upper M3",
+            "Mixson's Bone Bed"
+          ],
+          "majority_macro_baseline": 0.5,
+          "permutation_p": 0.072,
+          "permutations": 9999,
+          "seed": 42,
+          "assumption": "Specimen labels exchangeable; locality/photography confounding is not controlled.",
+          "ordinary_accuracy": 0.6666666666666666,
+          "secondary_cosine_contrast": -0.010075537419583336,
+          "holm_p_eight_conditions": 0.41459999999999997
+        },
+        {
+          "run": "upper_crown_224",
+          "position": "upper",
+          "feature": "crown",
+          "size": 224,
+          "macro_recall": 0.6666666666666666,
+          "per_site": {
+            "Love Bone Bed Upper M3": 0.6666666666666666,
+            "Mixson's Bone Bed": 0.6666666666666666
+          },
+          "supported_sites": [
+            "Love Bone Bed Upper M3",
+            "Mixson's Bone Bed"
+          ],
+          "majority_macro_baseline": 0.5,
+          "permutation_p": 0.0691,
+          "permutations": 9999,
+          "seed": 42,
+          "assumption": "Specimen labels exchangeable; locality/photography confounding is not controlled.",
+          "ordinary_accuracy": 0.6666666666666666,
+          "secondary_cosine_contrast": -0.012202770508768612,
+          "holm_p_eight_conditions": 0.41459999999999997
+        },
+        {
+          "run": "upper_cls_512",
+          "position": "upper",
+          "feature": "cls",
+          "size": 512,
+          "macro_recall": 0.75,
+          "per_site": {
+            "Love Bone Bed Upper M3": 0.8333333333333334,
+            "Mixson's Bone Bed": 0.6666666666666666
+          },
+          "supported_sites": [
+            "Love Bone Bed Upper M3",
+            "Mixson's Bone Bed"
+          ],
+          "majority_macro_baseline": 0.5,
+          "permutation_p": 0.0363,
+          "permutations": 9999,
+          "seed": 42,
+          "assumption": "Specimen labels exchangeable; locality/photography confounding is not controlled.",
+          "ordinary_accuracy": 0.8,
+          "secondary_cosine_contrast": 0.008777797425392864,
+          "holm_p_eight_conditions": 0.2616
+        },
+        {
+          "run": "upper_crown_512",
+          "position": "upper",
+          "feature": "crown",
+          "size": 512,
+          "macro_recall": 0.75,
+          "per_site": {
+            "Love Bone Bed Upper M3": 0.8333333333333334,
+            "Mixson's Bone Bed": 0.6666666666666666
+          },
+          "supported_sites": [
+            "Love Bone Bed Upper M3",
+            "Mixson's Bone Bed"
+          ],
+          "majority_macro_baseline": 0.5,
+          "permutation_p": 0.0327,
+          "permutations": 9999,
+          "seed": 42,
+          "assumption": "Specimen labels exchangeable; locality/photography confounding is not controlled.",
+          "ordinary_accuracy": 0.8,
+          "secondary_cosine_contrast": 0.00452572437605081,
+          "holm_p_eight_conditions": 0.2616
+        },
+        {
+          "run": "lower_cls_224",
+          "position": "lower",
+          "feature": "cls",
+          "size": 224,
+          "macro_recall": 0.4444444444444445,
+          "per_site": {
+            "Love_Bone_Bed": 0.8333333333333334,
+            "Mixsons_Bone_Bed": 0.0,
+            "Tyner_Farm": 0.5
+          },
+          "supported_sites": [
+            "Love_Bone_Bed",
+            "Mixsons_Bone_Bed",
+            "Tyner_Farm"
+          ],
+          "majority_macro_baseline": 0.3333333333333333,
+          "permutation_p": 0.1088,
+          "permutations": 9999,
+          "seed": 42,
+          "assumption": "Specimen labels exchangeable; locality/photography confounding is not controlled.",
+          "ordinary_accuracy": 0.6875,
+          "secondary_cosine_contrast": -0.00926018118588634,
+          "holm_p_eight_conditions": 0.4164
+        },
+        {
+          "run": "lower_crown_224",
+          "position": "lower",
+          "feature": "crown",
+          "size": 224,
+          "macro_recall": 0.4444444444444445,
+          "per_site": {
+            "Love_Bone_Bed": 0.8333333333333334,
+            "Mixsons_Bone_Bed": 0.0,
+            "Tyner_Farm": 0.5
+          },
+          "supported_sites": [
+            "Love_Bone_Bed",
+            "Mixsons_Bone_Bed",
+            "Tyner_Farm"
+          ],
+          "majority_macro_baseline": 0.3333333333333333,
+          "permutation_p": 0.1041,
+          "permutations": 9999,
+          "seed": 42,
+          "assumption": "Specimen labels exchangeable; locality/photography confounding is not controlled.",
+          "ordinary_accuracy": 0.6875,
+          "secondary_cosine_contrast": -0.006316083925881455,
+          "holm_p_eight_conditions": 0.4164
+        },
+        {
+          "run": "lower_cls_512",
+          "position": "lower",
+          "feature": "cls",
+          "size": 512,
+          "macro_recall": 0.3333333333333333,
+          "per_site": {
+            "Love_Bone_Bed": 1.0,
+            "Mixsons_Bone_Bed": 0.0,
+            "Tyner_Farm": 0.0
+          },
+          "supported_sites": [
+            "Love_Bone_Bed",
+            "Mixsons_Bone_Bed",
+            "Tyner_Farm"
+          ],
+          "majority_macro_baseline": 0.3333333333333333,
+          "permutation_p": 0.2614,
+          "permutations": 9999,
+          "seed": 42,
+          "assumption": "Specimen labels exchangeable; locality/photography confounding is not controlled.",
+          "ordinary_accuracy": 0.75,
+          "secondary_cosine_contrast": 0.011677480998082301,
+          "holm_p_eight_conditions": 0.5228
+        },
+        {
+          "run": "lower_crown_512",
+          "position": "lower",
+          "feature": "crown",
+          "size": 512,
+          "macro_recall": 0.3333333333333333,
+          "per_site": {
+            "Love_Bone_Bed": 1.0,
+            "Mixsons_Bone_Bed": 0.0,
+            "Tyner_Farm": 0.0
+          },
+          "supported_sites": [
+            "Love_Bone_Bed",
+            "Mixsons_Bone_Bed",
+            "Tyner_Farm"
+          ],
+          "majority_macro_baseline": 0.3333333333333333,
+          "permutation_p": 0.2619,
+          "permutations": 9999,
+          "seed": 42,
+          "assumption": "Specimen labels exchangeable; locality/photography confounding is not controlled.",
+          "ordinary_accuracy": 0.75,
+          "secondary_cosine_contrast": 0.008897264214122957,
+          "holm_p_eight_conditions": 0.5228
+        }
+      ]
+    },
+    "outputs/dinov3_crown_v1/upper_cls_224/analysis/summary.json": {
+      "sha256": "fde38333ae34d9d217a64697768ff9a448c45f2397d68b443f6c4cd37ff5d810",
+      "data": {
+        "within_site_mean_cosine": 0.7093395469845205,
+        "between_site_mean_cosine": 0.7194150844041038,
+        "within_minus_between": -0.010075537419583336,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.5245,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 15,
+          "unsupported_specimens": [
+            "UF-212305"
+          ],
+          "accuracy_eligible_only": 0.6666666666666666,
+          "per_site": {
+            "Love Bone Bed Upper M3": {
+              "specimens": 12,
+              "accuracy": 0.6666666666666666
+            },
+            "Mixson's Bone Bed": {
+              "specimens": 3,
+              "accuracy": 0.6666666666666666
+            },
+            "Tyner Farm": {
+              "specimens": 1,
+              "accuracy": null
+            }
+          }
+        },
+        "images": 17,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "b55bc0b1dbc449bb85ab6dcf441fea0ba2f032752512f755128fcc0caefb0459",
+        "specimen_aggregation": "Mean of normalized image feature vectors, then L2 normalization",
+        "feature": "CLS",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.25891363620758057,
+          0.1329348087310791
+        ]
+      }
+    },
+    "outputs/dinov3_crown_v1/upper_crown_224/analysis/summary.json": {
+      "sha256": "feabe018fabc05e3b4f4eadbe58ff255c33f8816b554fd47394dee82ae0dce77",
+      "data": {
+        "within_site_mean_cosine": 0.7917775589486827,
+        "between_site_mean_cosine": 0.8039803294574513,
+        "within_minus_between": -0.012202770508768612,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.5985,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 15,
+          "unsupported_specimens": [
+            "UF-212305"
+          ],
+          "accuracy_eligible_only": 0.6666666666666666,
+          "per_site": {
+            "Love Bone Bed Upper M3": {
+              "specimens": 12,
+              "accuracy": 0.6666666666666666
+            },
+            "Mixson's Bone Bed": {
+              "specimens": 3,
+              "accuracy": 0.6666666666666666
+            },
+            "Tyner Farm": {
+              "specimens": 1,
+              "accuracy": null
+            }
+          }
+        },
+        "images": 17,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "a09269e179994c2ccd9d1fd0f2c986600a05b275693b7ee2076250c418945de6",
+        "specimen_aggregation": "Mean of normalized image feature vectors, then L2 normalization",
+        "feature": "coverage-weighted mean of normalized crown patch tokens",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.26598551869392395,
+          0.13407345116138458
+        ]
+      }
+    },
+    "outputs/dinov3_crown_v1/upper_cls_512/analysis/summary.json": {
+      "sha256": "3ff615ff7352f522d7050231a38cd43df28e7563038db37e36b46599023b868b",
+      "data": {
+        "within_site_mean_cosine": 0.7523128649462825,
+        "between_site_mean_cosine": 0.7435350675208896,
+        "within_minus_between": 0.008777797425392864,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.3622,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 15,
+          "unsupported_specimens": [
+            "UF-212305"
+          ],
+          "accuracy_eligible_only": 0.8,
+          "per_site": {
+            "Love Bone Bed Upper M3": {
+              "specimens": 12,
+              "accuracy": 0.8333333333333334
+            },
+            "Mixson's Bone Bed": {
+              "specimens": 3,
+              "accuracy": 0.6666666666666666
+            },
+            "Tyner Farm": {
+              "specimens": 1,
+              "accuracy": null
+            }
+          }
+        },
+        "images": 17,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "9a67520eb530c69a7b0dba6e2f351d01316733b4883e9b5d2e4d4158088952d1",
+        "specimen_aggregation": "Mean of normalized image feature vectors, then L2 normalization",
+        "feature": "CLS",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.32616016268730164,
+          0.1350870579481125
+        ]
+      }
+    },
+    "outputs/dinov3_crown_v1/upper_crown_512/analysis/summary.json": {
+      "sha256": "ba3d73ae2c52a9abb0a650364092d483b29c8d419b39f5446e7d90a5f37d5cf6",
+      "data": {
+        "within_site_mean_cosine": 0.8572389422983363,
+        "between_site_mean_cosine": 0.8527132179222855,
+        "within_minus_between": 0.00452572437605081,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.3877,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 15,
+          "unsupported_specimens": [
+            "UF-212305"
+          ],
+          "accuracy_eligible_only": 0.8,
+          "per_site": {
+            "Love Bone Bed Upper M3": {
+              "specimens": 12,
+              "accuracy": 0.8333333333333334
+            },
+            "Mixson's Bone Bed": {
+              "specimens": 3,
+              "accuracy": 0.6666666666666666
+            },
+            "Tyner Farm": {
+              "specimens": 1,
+              "accuracy": null
+            }
+          }
+        },
+        "images": 17,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "45b7d45f97bbf194d0e392a8e7a5aa0a84a14a444ed975432b41229d09980572",
+        "specimen_aggregation": "Mean of normalized image feature vectors, then L2 normalization",
+        "feature": "coverage-weighted mean of normalized crown patch tokens",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.35697200894355774,
+          0.14624537527561188
+        ]
+      }
+    },
+    "outputs/dinov3_crown_v1/lower_cls_224/analysis/summary.json": {
+      "sha256": "043faa373c3005e701034a66c0ff4689fd21b3dbf59798a5b491a280c3ec06b9",
+      "data": {
+        "within_site_mean_cosine": 0.7304350812645519,
+        "between_site_mean_cosine": 0.7396952624504383,
+        "within_minus_between": -0.00926018118588634,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.6944,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 16,
+          "unsupported_specimens": [],
+          "accuracy_eligible_only": 0.6875,
+          "per_site": {
+            "Love_Bone_Bed": {
+              "specimens": 12,
+              "accuracy": 0.8333333333333334
+            },
+            "Mixsons_Bone_Bed": {
+              "specimens": 2,
+              "accuracy": 0.0
+            },
+            "Tyner_Farm": {
+              "specimens": 2,
+              "accuracy": 0.5
+            }
+          }
+        },
+        "images": 20,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "34bd330139182452a4d2d882f44d2059afc0b3a5265042e94f26e313dbd0051b",
+        "specimen_aggregation": "Mean of normalized image feature vectors, then L2 normalization",
+        "feature": "CLS",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.2498425394296646,
+          0.1400427371263504
+        ]
+      }
+    },
+    "outputs/dinov3_crown_v1/lower_crown_224/analysis/summary.json": {
+      "sha256": "0e6dcef909b5017664c009e61d80a374a83e894939b140494e8f8b32f836fd20",
+      "data": {
+        "within_site_mean_cosine": 0.8041378364843481,
+        "between_site_mean_cosine": 0.8104539204102296,
+        "within_minus_between": -0.006316083925881455,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.6456,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 16,
+          "unsupported_specimens": [],
+          "accuracy_eligible_only": 0.6875,
+          "per_site": {
+            "Love_Bone_Bed": {
+              "specimens": 12,
+              "accuracy": 0.8333333333333334
+            },
+            "Mixsons_Bone_Bed": {
+              "specimens": 2,
+              "accuracy": 0.0
+            },
+            "Tyner_Farm": {
+              "specimens": 2,
+              "accuracy": 0.5
+            }
+          }
+        },
+        "images": 20,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "85084326d3e9095bca1b6982cf849a3d79e317637296402e3c1709707bffc436",
+        "specimen_aggregation": "Mean of normalized image feature vectors, then L2 normalization",
+        "feature": "coverage-weighted mean of normalized crown patch tokens",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.27133551239967346,
+          0.15832968056201935
+        ]
+      }
+    },
+    "outputs/dinov3_crown_v1/lower_cls_512/analysis/summary.json": {
+      "sha256": "43cb9f8455155d014a39cfb8459cf5c221b6a9374818c274347c347a225708f5",
+      "data": {
+        "within_site_mean_cosine": 0.7616798904012231,
+        "between_site_mean_cosine": 0.7500024094031408,
+        "within_minus_between": 0.011677480998082301,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.2701,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 16,
+          "unsupported_specimens": [],
+          "accuracy_eligible_only": 0.75,
+          "per_site": {
+            "Love_Bone_Bed": {
+              "specimens": 12,
+              "accuracy": 1.0
+            },
+            "Mixsons_Bone_Bed": {
+              "specimens": 2,
+              "accuracy": 0.0
+            },
+            "Tyner_Farm": {
+              "specimens": 2,
+              "accuracy": 0.0
+            }
+          }
+        },
+        "images": 20,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "d77bdfbd73aa5e135d0f00d0896fcd90844bc679b3bbbe1b214ad62209cfa01b",
+        "specimen_aggregation": "Mean of normalized image feature vectors, then L2 normalization",
+        "feature": "CLS",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.3241324722766876,
+          0.13964185118675232
+        ]
+      }
+    },
+    "outputs/dinov3_crown_v1/lower_crown_512/analysis/summary.json": {
+      "sha256": "4a4baacba9ae59c7be15227feb682d37e7fc6c9d90897dfd2a1a5bf9eb394bb2",
+      "data": {
+        "within_site_mean_cosine": 0.8810725553947336,
+        "between_site_mean_cosine": 0.8721752911806107,
+        "within_minus_between": 0.008897264214122957,
+        "permutations": 9999,
+        "seed": 42,
+        "permutation_p_one_sided": 0.2202,
+        "permutation_assumption": "Specimen labels exchangeable across sites; confounding is not controlled.",
+        "nearest_neighbor": {
+          "eligible_specimens": 16,
+          "unsupported_specimens": [],
+          "accuracy_eligible_only": 0.75,
+          "per_site": {
+            "Love_Bone_Bed": {
+              "specimens": 12,
+              "accuracy": 1.0
+            },
+            "Mixsons_Bone_Bed": {
+              "specimens": 2,
+              "accuracy": 0.0
+            },
+            "Tyner_Farm": {
+              "specimens": 2,
+              "accuracy": 0.0
+            }
+          }
+        },
+        "images": 20,
+        "specimens": 16,
+        "metadata_source": "filename_inference",
+        "model": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        "resolved_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+        "input_bundle_sha256": "d4ef9cd03044db8744d7cd30b3e9f13db111ab96a6adc02232a36c0f768c11c0",
+        "specimen_aggregation": "Mean of normalized image feature vectors, then L2 normalization",
+        "feature": "coverage-weighted mean of normalized crown patch tokens",
+        "analysis_packages": {
+          "numpy": "2.2.6",
+          "scikit-learn": "1.7.2",
+          "matplotlib": "3.10.9"
+        },
+        "pca_explained_variance_ratio": [
+          0.3681642711162567,
+          0.1333785057067871
+        ]
+      }
+    },
+    "outputs/dinov3_group_hypothesis_v1/comparison.json": {
+      "sha256": "36ab2271986a918c5d041de3e1a6a9362acb2078fd0bb4d47e58a2e7336bfd75",
+      "data": {
+        "hypothesis": {
+          "name": "Love versus Mixson plus Tyner",
+          "status": "exploratory locality proxy; specimen-level taxon assignments unconfirmed",
+          "taxon_assignments_verified": false,
+          "motivation": "User thinks the Florida Museum research update applies to these specimens; this is tentative and requires catalog-ID verification with the advisor.",
+          "source": "https://www.floridamuseum.ufl.edu/nhdept/from-the-field/2026/amebelodon-or-not-that-is-the-question-a-reevaluation-of-amebelodontid-specimens-from-the-miocene-of-florida/",
+          "groups": {
+            "Love Bone Bed Upper M3": "Love",
+            "Love_Bone_Bed": "Love",
+            "Mixson's Bone Bed": "Mixson + Tyner",
+            "Mixsons_Bone_Bed": "Mixson + Tyner",
+            "Tyner Farm": "Mixson + Tyner",
+            "Tyner_Farm": "Mixson + Tyner"
+          },
+          "protocol": {
+            "runs": [
+              "upper_cls_224",
+              "upper_crown_224",
+              "upper_cls_512",
+              "upper_crown_512",
+              "lower_cls_224",
+              "lower_crown_224",
+              "lower_cls_512",
+              "lower_crown_512"
+            ],
+            "primary_metric": "Mean recall of the two provisional groups, using the nearest independent catalog-ID centroid",
+            "permutation": "Exact enumeration of all specimen-group assignments preserving the observed group sizes; one-sided",
+            "multiplicity": "Holm adjustment across the eight conditions; does not account for prior exploratory hypothesis selection",
+            "restrictions": "Reuse cached features and original image/specimen inventory; no model training, image edits, exclusions, feature tuning, or taxon relabeling"
+          }
+        },
+        "hypothesis_sha256": "fbcb46c056030478eb784e954d6deb0f83fc095bc39e3e19281ad76591af2f84",
+        "results": [
+          {
+            "run": "upper_cls_224",
+            "macro_recall": 0.7083333333333333,
+            "accuracy": 0.6875,
+            "group_counts": {
+              "Love": 12,
+              "Mixson + Tyner": 4
+            },
+            "group_recall": {
+              "Love": 0.6666666666666666,
+              "Mixson + Tyner": 0.75
+            },
+            "majority_accuracy": 0.75,
+            "majority_macro_recall": 0.5,
+            "exact_p": 0.06483516483516484,
+            "assignments": 1820,
+            "input_bundle_sha256": "b55bc0b1dbc449bb85ab6dcf441fea0ba2f032752512f755128fcc0caefb0459",
+            "model_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+            "holm_p_eight_conditions": 0.4538461538461539
+          },
+          {
+            "run": "upper_crown_224",
+            "macro_recall": 0.5833333333333333,
+            "accuracy": 0.625,
+            "group_counts": {
+              "Love": 12,
+              "Mixson + Tyner": 4
+            },
+            "group_recall": {
+              "Love": 0.6666666666666666,
+              "Mixson + Tyner": 0.5
+            },
+            "majority_accuracy": 0.75,
+            "majority_macro_recall": 0.5,
+            "exact_p": 0.2087912087912088,
+            "assignments": 1820,
+            "input_bundle_sha256": "a09269e179994c2ccd9d1fd0f2c986600a05b275693b7ee2076250c418945de6",
+            "model_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+            "holm_p_eight_conditions": 1.0
+          },
+          {
+            "run": "upper_cls_512",
+            "macro_recall": 0.7916666666666667,
+            "accuracy": 0.8125,
+            "group_counts": {
+              "Love": 12,
+              "Mixson + Tyner": 4
+            },
+            "group_recall": {
+              "Love": 0.8333333333333334,
+              "Mixson + Tyner": 0.75
+            },
+            "majority_accuracy": 0.75,
+            "majority_macro_recall": 0.5,
+            "exact_p": 0.02912087912087912,
+            "assignments": 1820,
+            "input_bundle_sha256": "9a67520eb530c69a7b0dba6e2f351d01316733b4883e9b5d2e4d4158088952d1",
+            "model_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+            "holm_p_eight_conditions": 0.23296703296703297
+          },
+          {
+            "run": "upper_crown_512",
+            "macro_recall": 0.6666666666666667,
+            "accuracy": 0.75,
+            "group_counts": {
+              "Love": 12,
+              "Mixson + Tyner": 4
+            },
+            "group_recall": {
+              "Love": 0.8333333333333334,
+              "Mixson + Tyner": 0.5
+            },
+            "majority_accuracy": 0.75,
+            "majority_macro_recall": 0.5,
+            "exact_p": 0.09065934065934066,
+            "assignments": 1820,
+            "input_bundle_sha256": "45b7d45f97bbf194d0e392a8e7a5aa0a84a14a444ed975432b41229d09980572",
+            "model_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+            "holm_p_eight_conditions": 0.5439560439560439
+          },
+          {
+            "run": "lower_cls_224",
+            "macro_recall": 0.5416666666666667,
+            "accuracy": 0.6875,
+            "group_counts": {
+              "Love": 12,
+              "Mixson + Tyner": 4
+            },
+            "group_recall": {
+              "Love": 0.8333333333333334,
+              "Mixson + Tyner": 0.25
+            },
+            "majority_accuracy": 0.75,
+            "majority_macro_recall": 0.5,
+            "exact_p": 0.28406593406593406,
+            "assignments": 1820,
+            "input_bundle_sha256": "34bd330139182452a4d2d882f44d2059afc0b3a5265042e94f26e313dbd0051b",
+            "model_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+            "holm_p_eight_conditions": 1.0
+          },
+          {
+            "run": "lower_crown_224",
+            "macro_recall": 0.5416666666666667,
+            "accuracy": 0.6875,
+            "group_counts": {
+              "Love": 12,
+              "Mixson + Tyner": 4
+            },
+            "group_recall": {
+              "Love": 0.8333333333333334,
+              "Mixson + Tyner": 0.25
+            },
+            "majority_accuracy": 0.75,
+            "majority_macro_recall": 0.5,
+            "exact_p": 0.2879120879120879,
+            "assignments": 1820,
+            "input_bundle_sha256": "85084326d3e9095bca1b6982cf849a3d79e317637296402e3c1709707bffc436",
+            "model_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+            "holm_p_eight_conditions": 1.0
+          },
+          {
+            "run": "lower_cls_512",
+            "macro_recall": 0.5,
+            "accuracy": 0.75,
+            "group_counts": {
+              "Love": 12,
+              "Mixson + Tyner": 4
+            },
+            "group_recall": {
+              "Love": 1.0,
+              "Mixson + Tyner": 0.0
+            },
+            "majority_accuracy": 0.75,
+            "majority_macro_recall": 0.5,
+            "exact_p": 0.3868131868131868,
+            "assignments": 1820,
+            "input_bundle_sha256": "d77bdfbd73aa5e135d0f00d0896fcd90844bc679b3bbbe1b214ad62209cfa01b",
+            "model_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+            "holm_p_eight_conditions": 1.0
+          },
+          {
+            "run": "lower_crown_512",
+            "macro_recall": 0.5,
+            "accuracy": 0.75,
+            "group_counts": {
+              "Love": 12,
+              "Mixson + Tyner": 4
+            },
+            "group_recall": {
+              "Love": 1.0,
+              "Mixson + Tyner": 0.0
+            },
+            "majority_accuracy": 0.75,
+            "majority_macro_recall": 0.5,
+            "exact_p": 0.432967032967033,
+            "assignments": 1820,
+            "input_bundle_sha256": "d4ef9cd03044db8744d7cd30b3e9f13db111ab96a6adc02232a36c0f768c11c0",
+            "model_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+            "holm_p_eight_conditions": 1.0
+          }
+        ]
+      }
+    }
+  }
+}

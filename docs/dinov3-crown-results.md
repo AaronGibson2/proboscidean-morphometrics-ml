@@ -1,5 +1,8 @@
 # Crown-patch experiment results
 
+See the [complete results guide](results-summary.md) for metric explanations and comparisons
+with the pilot and provisional-group analyses.
+
 Completed 2026-09-23 using the fixed [experiment protocol](dinov3-crown-experiment.md),
 37 photographs and the frozen pretrained ViT-B/16 checkpoint. No training or fine-tuning.
 The crown-patch and CLS features were extracted from the same forward pass for each image.

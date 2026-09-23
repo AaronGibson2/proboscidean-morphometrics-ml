@@ -1,0 +1,22 @@
+{
+  "name": "Love versus Mixson plus Tyner",
+  "status": "exploratory locality proxy; specimen-level taxon assignments unconfirmed",
+  "taxon_assignments_verified": false,
+  "motivation": "User thinks the Florida Museum research update applies to these specimens; this is tentative and requires catalog-ID verification with the advisor.",
+  "source": "https://www.floridamuseum.ufl.edu/nhdept/from-the-field/2026/amebelodon-or-not-that-is-the-question-a-reevaluation-of-amebelodontid-specimens-from-the-miocene-of-florida/",
+  "groups": {
+    "Love Bone Bed Upper M3": "Love",
+    "Love_Bone_Bed": "Love",
+    "Mixson's Bone Bed": "Mixson + Tyner",
+    "Mixsons_Bone_Bed": "Mixson + Tyner",
+    "Tyner Farm": "Mixson + Tyner",
+    "Tyner_Farm": "Mixson + Tyner"
+  },
+  "protocol": {
+    "runs": ["upper_cls_224", "upper_crown_224", "upper_cls_512", "upper_crown_512", "lower_cls_224", "lower_crown_224", "lower_cls_512", "lower_crown_512"],
+    "primary_metric": "Mean recall of the two provisional groups, using the nearest independent catalog-ID centroid",
+    "permutation": "Exact enumeration of all specimen-group assignments preserving the observed group sizes; one-sided",
+    "multiplicity": "Holm adjustment across the eight conditions; does not account for prior exploratory hypothesis selection",
+    "restrictions": "Reuse cached features and original image/specimen inventory; no model training, image edits, exclusions, feature tuning, or taxon relabeling"
+  }
+}

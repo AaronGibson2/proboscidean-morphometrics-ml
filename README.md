@@ -14,22 +14,30 @@ The research asks whether tooth photographs contain a reproducible signal that d
 
 ## Code and findings
 
-The DINOv3 implementation is currently on research branches. Select the experiment branch before running the commands below; this README update does not merge that code into `main`.
+**Start with the [complete results guide](docs/results-summary.md): all 24 conditions, plain-language metric explanations, specimen counts, baselines, and comparisons between experiments.** The [numerical snapshot](docs/results/numerical-results.json) preserves exact results on GitHub; full visual reports remain local in `outputs/`.
+
+The pilot and crown implementation was merged into `main` through PR #1. The latest provisional-group analysis and consolidated guide are on `dinov3/provisional-group-comparison` until that branch is merged.
 
 | Branch | Purpose |
 | --- | --- |
 | [`dinov3/conservative-crop-pilot`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/conservative-crop-pilot) | Frozen baseline, audited crop recipes, and pilot results |
 | [`dinov3/crown-patch-experiment`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/crown-patch-experiment) | Includes the pilot plus crown-patch pooling, resolution comparisons, and locality-balanced evaluation |
+| [`dinov3/provisional-group-comparison`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/provisional-group-comparison) | Adds exploratory Love versus Mixson + Tyner comparisons and the consolidated results guide |
 
-Documentation links are pinned to the completed experiment revision so they work before the code is merged into `main`:
+Documentation for the current checkout:
 
-- [DINOv3 setup and pilot workflow](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/dinov3.md)
-- [Conservative image preparation](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/conservative-crops.md)
-- [Pilot findings](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/dinov3-pilot-results.md)
-- [Crown experiment protocol](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/dinov3-crown-experiment.md)
-- [All eight crown experiment results](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/dinov3-crown-results.md)
+- [DINOv3 setup and pilot workflow](docs/dinov3.md)
+- [Conservative image preparation](docs/conservative-crops.md)
+- [Pilot findings](docs/dinov3-pilot-results.md)
+- [Crown experiment protocol](docs/dinov3-crown-experiment.md)
+- [All eight crown experiment results](docs/dinov3-crown-results.md)
 
 ## Latest results
+
+An additional [provisional Love versus Mixson + Tyner comparison](docs/dinov3-group-hypothesis-results.md)
+uses the same cached features to explore a literature-motivated grouping. Specimen-level taxon
+assignments remain unconfirmed. No condition survives correction across its eight comparisons;
+this is a separate exploratory question, not verified species identification.
 
 The primary metric is **macro locality recall**: average nearest-neighbor recall across localities with an independent same-site reference, giving each eligible locality equal weight.
 
@@ -53,17 +61,17 @@ Whole-image and crown-patch features achieved the same recall within each resolu
 
 The four lower Tyner photographs are paired teeth labeled `UF-212304` and `UF-217472`. Grouping is inferred from filenames and still requires collection-record confirmation. Features from photographs of one catalog ID are averaged before comparison, and a specimen cannot retrieve another photograph of itself as an independent neighbor.
 
-Upper Tyner remains in the reference pool but cannot be evaluated as a locality query because it has no second independent reference.
+For three-locality evaluation, upper Tyner remains in the reference pool but cannot be evaluated as a locality query because it has no second independent reference. For the provisional grouping, it becomes eligible because Mixson provides same-group references.
 
 ## Run locally
 
 The repository contains code, recipes, tests, written findings, and an older set of lower-tooth JPEG crops. **The complete source dataset, pretrained weights, generated HTML reports, and feature caches are not included.** Reproduction requires matching source photographs at the paths and hashes recorded in the recipes.
 
-On Windows PowerShell, select the implementation branch:
+On Windows PowerShell, select the branch containing all experiments:
 
 ```powershell
 git fetch origin
-git switch dinov3/crown-patch-experiment
+git switch dinov3/provisional-group-comparison
 ```
 
 For a fresh environment, use Python 3.10 or 3.11 and install a compatible PyTorch/torchvision build for your hardware. On the configured workstation, use the existing `.venv` instead of creating it again.
@@ -102,6 +110,7 @@ The crown experiment uses the cached checkpoint offline. Skip preparation when m
 | `outputs/dinov3/index.html` | Conservative-crop pilot overview |
 | `outputs/qc/crown_regions_v1/index.html` | Contributing crown patches at both resolutions |
 | `outputs/dinov3_crown_v1/index.html` | All eight experimental conditions and individual reports |
+| `outputs/dinov3_group_hypothesis_v1/index.html` | Eight provisional-group comparisons using the cached crown-experiment features |
 
 These paths refer to generated local files, not hosted GitHub pages. Individual runs record input hashes, checkpoint revision, crop/region provenance, and specimen-level results.
 
@@ -109,7 +118,7 @@ These paths refer to generated local files, not hosted GitHub pages. Individual 
 .venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-The experiment revision passed 25 local tests. Tests involving private photographs or optional model dependencies can skip when those resources are absent.
+The provisional-group implementation passed 28 local software tests. These check code behavior; they are separate from the 24 analytical conditions and do not establish scientific validity. Tests involving private photographs or optional model dependencies can skip when those resources are absent.
 
 ## Limitations and next steps
 

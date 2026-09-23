@@ -1,5 +1,8 @@
 # Provisional Love versus Mixson + Tyner comparison
 
+See the [complete results guide](results-summary.md) for metric explanations, all 24 conditions,
+and a numerical snapshot available without the local HTML reports.
+
 Exploratory locality grouping; specimen-level taxon identifications are unconfirmed.
 
 No images, original locality labels, taxon metadata, or feature vectors were changed. No training.

@@ -1,5 +1,8 @@
 # Frozen DINOv3 pilot: revised image preparation
 
+For all subsequent experiments and plain-language metric explanations, see the
+[complete results guide](results-summary.md).
+
 ## Current results: conservative crops on black, 2026-09-23
 
 The original masks removed real tooth surface and detached pieces. Those runs are now
@@ -99,8 +102,8 @@ and photography may influence the features. Locality labels are not taxonomic la
 
 Next scientific review: inspect the nearest-neighbor image panels with the advisor and record
 whether matches follow crown morphology, wear, or preservation. Confirm specimen metadata
-before stronger inference. A previously specified 512px sensitivity analysis remains available
-but has not been run; settings should not be selected just to obtain locality clusters.
+before stronger inference. The subsequent [crown and resolution experiment](dinov3-crown-results.md)
+now includes 512px conditions; settings should not be selected just to obtain locality clusters.
 
 ## Saved artifacts
 

@@ -1,0 +1,11 @@
+# Frozen DINOv3 feature extraction, conservative cropping, and analysis.
+numpy>=1.26,<3
+Pillow>=10,<13
+tifffile>=2023.7.10
+torch>=2.5,<3
+torchvision>=0.20,<1
+transformers>=4.56,<5
+huggingface-hub>=0.34,<1
+safetensors>=0.4.3,<1
+matplotlib>=3.8,<4
+scikit-learn>=1.4,<2

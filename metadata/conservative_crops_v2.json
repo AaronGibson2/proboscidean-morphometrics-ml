@@ -1,0 +1,1375 @@
+{
+  "version": "crop_black_v2",
+  "coordinate_system": "Source pixels; bbox right/bottom exclusive; exclusion polygon vertices inclusive.",
+  "review": "Assistant visual review; scientific anatomy review remains recommended.",
+  "images": [
+    {
+      "position": "upper",
+      "index": 0,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-276840-01-LUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-276840-01-LUM3.png",
+      "bbox": [
+        1571,
+        471,
+        4555,
+        2199
+      ],
+      "exclude_polygons": [
+        [
+          [
+            1571,
+            1948
+          ],
+          [
+            2081,
+            1948
+          ],
+          [
+            2317,
+            2199
+          ],
+          [
+            1571,
+            2199
+          ]
+        ]
+      ],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "dfa893a0bb7b7e7a431f4693beab1916eee4ee87735e296920adf73c623a777c",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "upper",
+      "index": 1,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38231-01-RUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38231-01-RUM3.png",
+      "bbox": [
+        432,
+        157,
+        4437,
+        2348
+      ],
+      "exclude_polygons": [
+        [
+          [
+            2003,
+            2348
+          ],
+          [
+            2160,
+            2183
+          ],
+          [
+            4437,
+            2183
+          ],
+          [
+            4437,
+            2348
+          ]
+        ]
+      ],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "3ed2682cf26534fb7902b3b2e8e1c54a7da2c9b4d2caf6493bdfc2d297c6eac7",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Attached bone/matrix preserved; morphology review needed."
+    },
+    {
+      "position": "upper",
+      "index": 2,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38232-01-RUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38232-01-RUM3.png",
+      "bbox": [
+        1374,
+        432,
+        4398,
+        1901
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "ab38b1d261bd6f766c239df10f83695ad5a6b8d1416a99afedcd7cb1a001137b",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved."
+    },
+    {
+      "position": "upper",
+      "index": 3,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38233-01-LUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38233-01-LUM3.png",
+      "bbox": [
+        1610,
+        314,
+        4280,
+        1689
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "e8642c2a6b37920bf714ffb7ba9e2ab4cf21722d97bf19872ece07a74fff1f71",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved."
+    },
+    {
+      "position": "upper",
+      "index": 4,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38234-01-LUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38234-01-LUM3.png",
+      "bbox": [
+        982,
+        668,
+        3966,
+        2199
+      ],
+      "exclude_polygons": [
+        [
+          [
+            982,
+            1838
+          ],
+          [
+            1139,
+            1963
+          ],
+          [
+            1532,
+            2199
+          ],
+          [
+            982,
+            2199
+          ]
+        ]
+      ],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "5fe70b089d84a8eb55d2bcf2e9339cc6575b3e0bb61db666d5b43b51d58b501d",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "upper",
+      "index": 5,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38235-01-LUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38235-01-LUM3.png",
+      "bbox": [
+        1178,
+        942,
+        3927,
+        2356
+      ],
+      "exclude_polygons": [
+        [
+          [
+            1178,
+            2254
+          ],
+          [
+            1453,
+            2254
+          ],
+          [
+            1555,
+            2356
+          ],
+          [
+            1178,
+            2356
+          ]
+        ]
+      ],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "714d31055d0a4d45d7d30a266bc23b02d06bffaed89fe069991f13a003d38662",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "upper",
+      "index": 6,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38237-01-LUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38237-01-LUM3.png",
+      "bbox": [
+        668,
+        668,
+        3691,
+        2168
+      ],
+      "exclude_polygons": [
+        [
+          [
+            668,
+            2081
+          ],
+          [
+            982,
+            2105
+          ],
+          [
+            1343,
+            2168
+          ],
+          [
+            668,
+            2168
+          ]
+        ]
+      ],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "1d57fb27918c008b028984a150a22918c3d19b5062ae89d6427ce096d758f8ca",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "upper",
+      "index": 7,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38239-01-LUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38239-01-LUM3.png",
+      "bbox": [
+        1374,
+        628,
+        3888,
+        1963
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "9dce0225466c98eccffde048179bd4b82915a12e41c38f81f206b34b2a4ac63e",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved."
+    },
+    {
+      "position": "upper",
+      "index": 8,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38240-03-RUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38240-03-RUM3.png",
+      "bbox": [
+        432,
+        314,
+        4634,
+        2356
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "14158cd6775f2d0b0e732a7ea5ade7b7c28609f3858c5838de2915b4c0393c5b",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Attached bone/matrix preserved; morphology review needed."
+    },
+    {
+      "position": "upper",
+      "index": 9,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38243-01-RUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38243-01-RUM3.png",
+      "bbox": [
+        864,
+        707,
+        3495,
+        2144
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "d21680bf815eb5b14912d666714b36e79e8ea693f862ddcccabed02cf44bf545",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved."
+    },
+    {
+      "position": "upper",
+      "index": 10,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38244-01-RUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38244-01-RUM3.png",
+      "bbox": [
+        1100,
+        864,
+        3534,
+        2238
+      ],
+      "exclude_polygons": [
+        [
+          [
+            1100,
+            1869
+          ],
+          [
+            1319,
+            1948
+          ],
+          [
+            1422,
+            2238
+          ],
+          [
+            1100,
+            2238
+          ]
+        ]
+      ],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "03a5ba1a41be16d6cd6e65d121689851436f1334ca6dbb825c086107747c932e",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "upper",
+      "index": 11,
+      "source": "data/preprocessed/upper_m3/Love Bone Bed Upper M3/UF-38247-01-RUM3.tiff",
+      "image_path": "Love Bone Bed Upper M3/UF-38247-01-RUM3.png",
+      "bbox": [
+        1178,
+        314,
+        4123,
+        2081
+      ],
+      "exclude_polygons": [
+        [
+          [
+            1178,
+            314
+          ],
+          [
+            1233,
+            314
+          ],
+          [
+            1233,
+            1492
+          ],
+          [
+            1178,
+            1492
+          ]
+        ]
+      ],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "2138b1b94eaaa1164e07b645fc923546d15633dc9c911502634c5502c1fb80f8",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "upper",
+      "index": 12,
+      "source": "data/preprocessed/upper_m3/Mixson's Bone Bed/USNM-3080-01-RUM3.tiff",
+      "image_path": "Mixson's Bone Bed/USNM-3080-01-RUM3.png",
+      "bbox": [
+        143,
+        2400,
+        3571,
+        4286
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        4000,
+        6000
+      ],
+      "source_sha256": "e88c24bbd83e0fe54811d6ca5669a03f301ef0443af4f7ac06ecbd1f95d37579",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved."
+    },
+    {
+      "position": "upper",
+      "index": 13,
+      "source": "data/preprocessed/upper_m3/Mixson's Bone Bed/USNM-3084-01-RUM3.tiff",
+      "image_path": "Mixson's Bone Bed/USNM-3084-01-RUM3.png",
+      "bbox": [
+        2143,
+        381,
+        4048,
+        3762
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        6000,
+        4000
+      ],
+      "source_sha256": "327645fb5c244c2a3f0f738567562a7d31f71dd2443c908a66d3508d05df1ceb",
+      "quarter_turns_ccw": 1,
+      "mirror_left": false,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved."
+    },
+    {
+      "position": "upper",
+      "index": 14,
+      "source": "data/preprocessed/upper_m3/Mixson's Bone Bed/USNM-3085-01-LUM3.tiff",
+      "image_path": "Mixson's Bone Bed/USNM-3085-01-LUM3.png",
+      "bbox": [
+        500,
+        2286,
+        3814,
+        3786
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        4000,
+        6000
+      ],
+      "source_sha256": "c3a5a1526ca53e77e6171f49ede4c85b2ab57bd64830da6eb9202bb3e9fe43c9",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved."
+    },
+    {
+      "position": "upper",
+      "index": 15,
+      "source": "data/preprocessed/upper_m3/Tyner Farm/UF-212305-01-LUM3.tiff",
+      "image_path": "Tyner Farm/UF-212305-01-LUM3.png",
+      "bbox": [
+        1335,
+        1414,
+        3770,
+        2788
+      ],
+      "exclude_polygons": [
+        [
+          [
+            3479,
+            1414
+          ],
+          [
+            3770,
+            1414
+          ],
+          [
+            3770,
+            1846
+          ],
+          [
+            3652,
+            1728
+          ]
+        ]
+      ],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "089f0c97b7e8b100a2bc83f1a8ba46e8b3d91885fd1998a165f3757a14713b77",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention. Detached pieces retained."
+    },
+    {
+      "position": "upper",
+      "index": 16,
+      "source": "data/preprocessed/upper_m3/Tyner Farm/UF-212305-01-RUM3.tiff",
+      "image_path": "Tyner Farm/UF-212305-01-RUM3.png",
+      "bbox": [
+        903,
+        1532,
+        3456,
+        2867
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        4948,
+        3280
+      ],
+      "source_sha256": "536c3804a126dbb43dd053619c9946589a080751a0468ef1717643f84cf92d08",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Rectangle from original converted TIFF; dark crown pixels preserved. Detached pieces retained."
+    },
+    {
+      "position": "lower",
+      "index": 0,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38208-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38208-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        3162,
+        956
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        3162,
+        956
+      ],
+      "source_sha256": "1f83c66796b378157f9e8f6dcb2c4890da1f9d0f3ee7e9738aa3c49dd8350b70",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Attached bone/matrix preserved; morphology review needed."
+    },
+    {
+      "position": "lower",
+      "index": 1,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38213-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38213-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2027,
+        887
+      ],
+      "exclude_polygons": [
+        [
+          [
+            547,
+            0
+          ],
+          [
+            669,
+            0
+          ],
+          [
+            637,
+            29
+          ],
+          [
+            598,
+            23
+          ]
+        ]
+      ],
+      "source_size": [
+        2027,
+        887
+      ],
+      "source_sha256": "7130f4ef5568a1d9f9349db55348c9a65be404db7188e8015c5bce01cdf9a0ba",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "lower",
+      "index": 2,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38215-LL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38215-LL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2886,
+        1052
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        2886,
+        1052
+      ],
+      "source_sha256": "3f5f1d97af5ba1230abd4a7117b6b2ab051227884ae42feba1153660e086e72f",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Catalog writing on the tooth retained; no inpainting."
+    },
+    {
+      "position": "lower",
+      "index": 3,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38215-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38215-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2810,
+        1064
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        2810,
+        1064
+      ],
+      "source_sha256": "6ccdbe1cddaba03ae082f79f1a714cf7706e17f242926565ab86ce62b0dbacfb",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels."
+    },
+    {
+      "position": "lower",
+      "index": 4,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38216-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38216-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        3111,
+        1269
+      ],
+      "exclude_polygons": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            296,
+            0
+          ],
+          [
+            207,
+            35
+          ],
+          [
+            148,
+            104
+          ],
+          [
+            94,
+            212
+          ],
+          [
+            49,
+            346
+          ],
+          [
+            15,
+            489
+          ],
+          [
+            0,
+            538
+          ]
+        ],
+        [
+          [
+            0,
+            854
+          ],
+          [
+            49,
+            968
+          ],
+          [
+            123,
+            1052
+          ],
+          [
+            247,
+            1116
+          ],
+          [
+            415,
+            1165
+          ],
+          [
+            543,
+            1190
+          ],
+          [
+            543,
+            1269
+          ],
+          [
+            0,
+            1269
+          ]
+        ],
+        [
+          [
+            528,
+            0
+          ],
+          [
+            622,
+            0
+          ],
+          [
+            622,
+            35
+          ],
+          [
+            578,
+            15
+          ]
+        ]
+      ],
+      "source_size": [
+        3111,
+        1269
+      ],
+      "source_sha256": "0653561be1cfb6739a660e1cdebb9c960f4387e5e4b91f0a265132045a5340fc",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "lower",
+      "index": 5,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38218-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38218-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2356,
+        960
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        2356,
+        960
+      ],
+      "source_sha256": "92946c84eb53f40109c06f2ea68f3ec20b4bc5592b0ebf8681975fd12f9c9ca4",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels."
+    },
+    {
+      "position": "lower",
+      "index": 6,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38220-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38220-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        3040,
+        1353
+      ],
+      "exclude_polygons": [
+        [
+          [
+            0,
+            999
+          ],
+          [
+            72,
+            1129
+          ],
+          [
+            222,
+            1202
+          ],
+          [
+            449,
+            1245
+          ],
+          [
+            579,
+            1250
+          ],
+          [
+            579,
+            1353
+          ],
+          [
+            0,
+            1353
+          ]
+        ]
+      ],
+      "source_size": [
+        3040,
+        1353
+      ],
+      "source_sha256": "4154ba573df30db0b934c1103c4ca401ad7558d81649d59f29ada19474ea47f7",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention. Attached bone/matrix preserved; morphology review needed."
+    },
+    {
+      "position": "lower",
+      "index": 7,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38221-LL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38221-LL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2907,
+        1162
+      ],
+      "exclude_polygons": [
+        [
+          [
+            0,
+            886
+          ],
+          [
+            378,
+            927
+          ],
+          [
+            378,
+            1071
+          ],
+          [
+            457,
+            1162
+          ],
+          [
+            0,
+            1162
+          ]
+        ],
+        [
+          [
+            1800,
+            1162
+          ],
+          [
+            2243,
+            1107
+          ],
+          [
+            2524,
+            1047
+          ],
+          [
+            2704,
+            978
+          ],
+          [
+            2842,
+            886
+          ],
+          [
+            2907,
+            798
+          ],
+          [
+            2907,
+            1162
+          ]
+        ],
+        [
+          [
+            2570,
+            0
+          ],
+          [
+            2907,
+            0
+          ],
+          [
+            2907,
+            738
+          ],
+          [
+            2870,
+            618
+          ],
+          [
+            2815,
+            291
+          ],
+          [
+            2773,
+            143
+          ],
+          [
+            2722,
+            60
+          ],
+          [
+            2653,
+            23
+          ]
+        ],
+        [
+          [
+            1809,
+            0
+          ],
+          [
+            2293,
+            0
+          ],
+          [
+            2123,
+            23
+          ],
+          [
+            1993,
+            46
+          ],
+          [
+            1827,
+            32
+          ]
+        ]
+      ],
+      "source_size": [
+        2907,
+        1162
+      ],
+      "source_sha256": "f1408a8a65601e554afbcf286c77e3137e652c9b5de7136be0c560c7d7a39148",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention. Catalog writing on the tooth retained; no inpainting."
+    },
+    {
+      "position": "lower",
+      "index": 8,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38223-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38223-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2684,
+        1043
+      ],
+      "exclude_polygons": [
+        [
+          [
+            0,
+            920
+          ],
+          [
+            251,
+            963
+          ],
+          [
+            251,
+            1043
+          ],
+          [
+            0,
+            1043
+          ]
+        ]
+      ],
+      "source_size": [
+        2684,
+        1043
+      ],
+      "source_sha256": "fef2dc2f4cab6f2125c78011ae5d09b7614a859054c0c7202307c4e93ab1dfde",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "lower",
+      "index": 9,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38226-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38226-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        3022,
+        1221
+      ],
+      "exclude_polygons": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            206,
+            0
+          ],
+          [
+            168,
+            101
+          ],
+          [
+            96,
+            221
+          ],
+          [
+            67,
+            264
+          ],
+          [
+            173,
+            360
+          ],
+          [
+            106,
+            437
+          ],
+          [
+            82,
+            504
+          ],
+          [
+            0,
+            513
+          ]
+        ],
+        [
+          [
+            633,
+            0
+          ],
+          [
+            1007,
+            0
+          ],
+          [
+            955,
+            153
+          ],
+          [
+            902,
+            192
+          ],
+          [
+            887,
+            106
+          ]
+        ],
+        [
+          [
+            0,
+            815
+          ],
+          [
+            48,
+            916
+          ],
+          [
+            130,
+            1017
+          ],
+          [
+            321,
+            1113
+          ],
+          [
+            590,
+            1166
+          ],
+          [
+            849,
+            1209
+          ],
+          [
+            0,
+            1209
+          ]
+        ]
+      ],
+      "source_size": [
+        3022,
+        1221
+      ],
+      "source_sha256": "5a2d0ed3178fcdc89db7398a90e7a6213ae54e0ed6a205b228a946ff589f36d9",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "lower",
+      "index": 10,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38228-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38228-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        1987,
+        1406
+      ],
+      "exclude_polygons": [
+        [
+          [
+            0,
+            1063
+          ],
+          [
+            211,
+            1173
+          ],
+          [
+            404,
+            1249
+          ],
+          [
+            700,
+            1375
+          ],
+          [
+            732,
+            1406
+          ],
+          [
+            0,
+            1406
+          ]
+        ],
+        [
+          [
+            1757,
+            0
+          ],
+          [
+            1987,
+            0
+          ],
+          [
+            1987,
+            60
+          ],
+          [
+            1757,
+            25
+          ]
+        ]
+      ],
+      "source_size": [
+        1987,
+        1406
+      ],
+      "source_sha256": "16ac287119e58faa34a0d4c72c4996256a6ab47639897421e064986efa88c7fc",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention. Attached bone/matrix preserved; morphology review needed."
+    },
+    {
+      "position": "lower",
+      "index": 11,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38241-LL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38241-LL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2234,
+        987
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        2234,
+        987
+      ],
+      "source_sha256": "dd8539e153eea44348ab4d6aff4031485b62e61de8bb39e9348e530fca279d4f",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Catalog writing on the tooth retained; no inpainting."
+    },
+    {
+      "position": "lower",
+      "index": 12,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38249-LL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38249-LL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        1893,
+        877
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        1893,
+        877
+      ],
+      "source_sha256": "6fd5a32670ffe2977adcad1ebc541379f5321f3af7be59e8523c4381056c0d83",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Attached bone/matrix preserved; morphology review needed."
+    },
+    {
+      "position": "lower",
+      "index": 13,
+      "source": "data/segmented/lower_m3/Love_Bone_Bed/LBB-UF-38249-RL_occlusal.jpg",
+      "image_path": "Love_Bone_Bed/LBB-UF-38249-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        1711,
+        720
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        1711,
+        720
+      ],
+      "source_sha256": "35ce9e17e34198785ea38f4d17d34130b5f584e4a1de05637d55131aefe5071d",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Attached bone/matrix preserved; morphology review needed."
+    },
+    {
+      "position": "lower",
+      "index": 14,
+      "source": "data/segmented/lower_m3/Mixsons_Bone_Bed/Mixson_USNM-3082_occlusal.jpg",
+      "image_path": "Mixsons_Bone_Bed/Mixson_USNM-3082_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        1272,
+        3239
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        1272,
+        3239
+      ],
+      "source_sha256": "378abc324e4217108bb7f07603e053b9fbf40d62f0ffdc122c54f3917aca26a9",
+      "quarter_turns_ccw": 1,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels."
+    },
+    {
+      "position": "lower",
+      "index": 15,
+      "source": "data/segmented/lower_m3/Mixsons_Bone_Bed/Mixson_USNM-3083_occlusal.jpg",
+      "image_path": "Mixsons_Bone_Bed/Mixson_USNM-3083_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        1220,
+        3082
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        1220,
+        3082
+      ],
+      "source_sha256": "e9fddfcbc66ab3f4283e59fc1318287a8f40fb4fc698a9405529d9c3aabc6a68",
+      "quarter_turns_ccw": 1,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels."
+    },
+    {
+      "position": "lower",
+      "index": 16,
+      "source": "data/segmented/lower_m3/Tyner_Farm/Tyner_UF-212304_LL_occlusal.jpg",
+      "image_path": "Tyner_Farm/Tyner_UF-212304_LL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2810,
+        1122
+      ],
+      "exclude_polygons": [
+        [
+          [
+            0,
+            963
+          ],
+          [
+            107,
+            1035
+          ],
+          [
+            281,
+            1122
+          ],
+          [
+            0,
+            1122
+          ]
+        ]
+      ],
+      "source_size": [
+        2810,
+        1122
+      ],
+      "source_sha256": "aefac25ea53f56954218cd1f8b56dec0a0a6b834253661323c2d710eaea19a98",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "lower",
+      "index": 17,
+      "source": "data/segmented/lower_m3/Tyner_Farm/Tyner_UF-212304-RL_occlusal.jpg",
+      "image_path": "Tyner_Farm/Tyner_UF-212304-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2551,
+        1107
+      ],
+      "exclude_polygons": [
+        [
+          [
+            0,
+            976
+          ],
+          [
+            121,
+            1041
+          ],
+          [
+            308,
+            1107
+          ],
+          [
+            0,
+            1107
+          ]
+        ]
+      ],
+      "source_size": [
+        2551,
+        1107
+      ],
+      "source_sha256": "ea19a65f9421d4dd706e477b252da20816d5dbedaad2d6984328f1d604820590",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Manual background exclusions remove paper/scale or exposed backing; small margins favor anatomy retention."
+    },
+    {
+      "position": "lower",
+      "index": 18,
+      "source": "data/segmented/lower_m3/Tyner_Farm/Tyner_UF-217472-LL_occlusal.jpg",
+      "image_path": "Tyner_Farm/Tyner_UF-217472-LL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2606,
+        940
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        2606,
+        940
+      ],
+      "source_sha256": "55df34e748786452206d908c5cdd866c17365f8b3efd7744e16bc42844da9e1b",
+      "quarter_turns_ccw": 0,
+      "mirror_left": true,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels."
+    },
+    {
+      "position": "lower",
+      "index": 19,
+      "source": "data/segmented/lower_m3/Tyner_Farm/Tyner_UF-217472-RL_occlusal.jpg",
+      "image_path": "Tyner_Farm/Tyner_UF-217472-RL_occlusal.png",
+      "bbox": [
+        0,
+        0,
+        2755,
+        955
+      ],
+      "exclude_polygons": [],
+      "source_size": [
+        2755,
+        955
+      ],
+      "source_sha256": "35ae5c29b562e0367130bc3f634204f13e366e0b2e9357da8dd6220a792934db",
+      "quarter_turns_ccw": 0,
+      "mirror_left": false,
+      "notes": "Earliest available JPEG is already tightly cropped; preserve all available tooth pixels. Detached pieces retained."
+    }
+  ]
+}

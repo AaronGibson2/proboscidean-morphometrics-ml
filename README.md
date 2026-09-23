@@ -23,6 +23,22 @@ Open `outputs/dinov3/index.html` locally to view all four reports and plots.
 The default now uses [conservative crops](docs/conservative-crops.md); the original masks
 removed real tooth surface. Review all 37 before/after images in `outputs/qc/crop_black_v2/index.html`.
 
+The `dinov3/crown-patch-experiment` branch adds a fixed, training-free comparison of whole-image
+and crown-patch features at 224/512 pixels. See the [experiment protocol](docs/dinov3-crown-experiment.md)
+and [results](docs/dinov3-crown-results.md). These separate experiments preserve all pilot outputs.
+
+```powershell
+.venv\Scripts\python.exe scripts/run_dinov3_crown_experiment.py --prepare-only
+# Inspect outputs/qc/crown_regions_v1/index.html before extraction.
+.venv\Scripts\python.exe scripts/run_dinov3_crown_experiment.py
+```
+
+The experiment uses the already cached checkpoint offline. Its reports are in
+`outputs/dinov3_crown_v1/index.html`. Completed experiments cannot be overwritten through
+this runner; use a new version for later region revisions. Sources, model weights, and
+generated outputs remain local; committed recipes, protocol, tests, and written results
+are shared on GitHub.
+
 Upper and lower M3s are processed and analyzed separately. All default paths resolve from
 the repository root, so scripts may be launched from any working directory.
 

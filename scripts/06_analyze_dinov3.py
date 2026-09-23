@@ -63,7 +63,8 @@ def build_report(run_dir: Path, *, images: Path | None = None, permutations: int
                   "metadata_source": provenance["metadata_source"],
                   "model": provenance["model"], "resolved_revision": provenance.get("resolved_revision"),
                   "input_bundle_sha256": sha256(run_dir / "embeddings.npz"),
-                  "specimen_aggregation": "Mean of normalized image CLS vectors, then L2 normalization",
+                  "specimen_aggregation": "Mean of normalized image feature vectors, then L2 normalization",
+                  "feature": provenance.get("feature", "CLS"),
                   "analysis_packages": {name: version(name)
                                         for name in ("numpy", "scikit-learn", "matplotlib")}})
     nearest = nearest_specimens(specimen_features, specimens, k=neighbors)
@@ -149,7 +150,7 @@ def build_report(run_dir: Path, *, images: Path | None = None, permutations: int
     if unsupported:
         limitations.append("No same-site reference for: " + ", ".join(unsupported))
     lines = [f"# {title}", "", f"{len(records)} images; {len(specimens)} independent catalog IDs.", "",
-             "Frozen pretrained DINOv3 CLS features; no training or fine-tuning.", "",
+             f"Frozen pretrained DINOv3 features ({provenance.get('feature', 'CLS')}); no training or fine-tuning.", "",
              f"Within minus between-site mean cosine: {stats['within_minus_between']}",
              f"One-sided specimen-label permutation p: {stats['permutation_p_one_sided']}",
              f"Nearest-neighbor results: {json.dumps(stats['nearest_neighbor'])}", "",

@@ -8,6 +8,7 @@ data/raw/
 data/preprocessed/
 data/segmented/
 data/standardized/
+data/cropped_v2/
 outputs/
 temp_input.jpg
 test_output.jpg
@@ -16,6 +17,7 @@ __pycache__/
 *.pyc
 .env
 .venv/
+.cache/
 .pytest_cache/
 .idea/
 .vscode/

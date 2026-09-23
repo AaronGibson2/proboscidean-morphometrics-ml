@@ -10,10 +10,18 @@ results, not taxonomic diagnoses or inferential evidence by themselves.
 
 1. Convert NEF/TIFF photographs to consistent 16-bit RGB TIFFs.
 2. Build an auditable image/specimen manifest with source hashes.
-3. Propose tooth silhouettes, apply recorded crop overrides, and generate segmentation QC.
-4. Apply human inclusion decisions; standardize orientation, scale, and background.
-5. Train BioEncoder stage-one morphology embeddings.
-6. export interactive and static PCA/t-SNE plots plus their coordinates.
+3. Apply reviewed conservative crops and remove separate museum labels without thresholding tooth pixels.
+4. Preserve inclusion decisions; place whole crops on black canvases and generate comparison QC.
+5. Extract frozen pretrained DINOv3 features, with no training or fine-tuning.
+6. Compare independent specimens using cosine similarity, nearest neighbors, PCA, and label permutations.
+
+Start with the [DINOv3 setup and run guide](docs/dinov3.md). Existing BioEncoder scripts and
+outputs are retained for historical comparison; they are not used by the DINOv3 workflow.
+
+The first frozen DINOv3 pilot is complete: [findings](docs/dinov3-pilot-results.md).
+Open `outputs/dinov3/index.html` locally to view all four reports and plots.
+The default now uses [conservative crops](docs/conservative-crops.md); the original masks
+removed real tooth surface. Review all 37 before/after images in `outputs/qc/crop_black_v2/index.html`.
 
 Upper and lower M3s are processed and analyzed separately. All default paths resolve from
 the repository root, so scripts may be launched from any working directory.
@@ -21,7 +29,8 @@ the repository root, so scripts may be launched from any working directory.
 ## Repository layout
 
 ```text
-bioencoder_configs/       BioEncoder experiment configuration
+bioencoder_configs/       Legacy BioEncoder experiment configuration
+docs/                    DINOv3 setup, methods, and research notes
 data/
   raw/                    Immutable source photographs (ignored by Git)
   preprocessed/           Converted TIFFs and reports (ignored)
@@ -30,6 +39,7 @@ data/
 metadata/                 QC decisions, crop overrides, and specimen schema
 outputs/
   bioencoder/             Dataset splits, weights, logs, coordinates, and plots (ignored)
+  dinov3/                 Frozen features, specimen comparisons, and reports (ignored)
   qc/                     Contact sheets, masks, and processing reports (ignored)
 scripts/                  Numbered pipeline stages and shared utilities
 tests/                    Fast metadata/unit tests
@@ -42,44 +52,56 @@ data/raw/Upper/Love Bone Bed Upper M3/UF-38252-01-UM3.nef
 data/raw/Lower/Tyner_Farm/UF-212304-RL_occlusal.tiff
 ```
 
-The directory supplied to BioEncoder must contain exactly one immediate directory per site.
+Each standardized dataset contains one immediate directory per locality.
 
 ## Installation
 
-Python 3.10 or 3.11 and CUDA-capable PyTorch are recommended for training.
+Python 3.10 or 3.11 and CUDA-capable PyTorch are recommended for local inference.
+On the configured workstation, use the existing `.venv` directly. For a fresh environment:
 
 ```powershell
 python -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+.venv\Scripts\python.exe -m pip install --upgrade pip
+.venv\Scripts\python.exe -m pip install -r requirements-dinov3.txt
 ```
 
 Install the PyTorch build appropriate for the computer's CUDA version if the default package
-is unsuitable. SAM3 is optional; install `autodistill` and `autodistill-sam3` only when needed.
+is unsuitable. `requirements.txt` retains the legacy/preprocessing dependencies, including
+BioEncoder. SAM3 is optional; install its dependencies only when needed.
+
+Meta's pretrained weights require account access and a local Hugging Face login. After
+following the [access instructions](docs/dinov3.md#one-time-checkpoint-access):
+
+```powershell
+.venv\Scripts\python.exe scripts/prepare_conservative_crops.py
+.venv\Scripts\python.exe scripts/run_dinov3_pilot.py --inventory-only
+.venv\Scripts\python.exe scripts/run_dinov3_pilot.py
+```
+
+The second command runs upper/lower RGB/grayscale separately and writes local HTML reports
+under `outputs/dinov3/`. No model is trained.
 
 ## Upper-M3 workflow
 
-The commands below reproduce the current strict upper-M3 RGB experiment:
+Convert the upper originals if needed. The conservative crop builder uses these TIFFs
+directly and also prepares the existing lower JPEGs. If the v2 images already exist,
+skip directly to DINOv3:
 
 ```powershell
 python scripts/01_convert_nefs.py --input data/raw/Upper --output data/preprocessed/upper_m3
 python scripts/02_build_manifest.py --images data/preprocessed/upper_m3 --output outputs/manifests/upper_m3.csv
-python scripts/03_segment_all.py --input data/preprocessed/upper_m3 --output data/segmented/upper_m3 --method contour
-python scripts/04_standardize_images.py --input data/segmented/upper_m3 --output data/standardized/upper_m3_strict --curation metadata/upper_m3_image_qc.csv
-python scripts/05_train_bioencoder.py --images data/standardized/upper_m3_strict/rgb --allow-image-level-split --allow-single-specimen-class --run-name proboscidean_upper_standardized_rgb_v1
-python scripts/06_plot_embeddings.py --run-name proboscidean_upper_standardized_rgb_v1 --title "Proboscidean upper M3 embeddings — strict RGB dataset"
+.venv\Scripts\python.exe scripts/prepare_conservative_crops.py
+.venv\Scripts\python.exe scripts/run_dinov3_pilot.py --dataset upper --color rgb
 ```
 
-The two `--allow-*` switches explicitly acknowledge that the current Tyner upper sample is
-one individual represented by left and right teeth. The resulting validation metric is not
-an estimate of generalization to new Tyner specimens.
+The current Tyner upper sample is one individual represented by left and right teeth.
+DINOv3 analysis combines those images into one specimen and marks its locality recognition
+as unsupported because no independent same-site reference remains.
 
 For the grayscale control, use the same standardized dataset:
 
 ```powershell
-python scripts/05_train_bioencoder.py --images data/standardized/upper_m3_strict/grayscale --allow-image-level-split --allow-single-specimen-class --run-name proboscidean_upper_standardized_gray_v1
-python scripts/06_plot_embeddings.py --run-name proboscidean_upper_standardized_gray_v1 --title "Proboscidean upper M3 embeddings — strict grayscale dataset"
+.venv\Scripts\python.exe scripts/run_dinov3_pilot.py --dataset upper --color grayscale
 ```
 
 Add `--overwrite` to stages 01, 03, 05, or 06 only when intentionally replacing existing
@@ -91,15 +113,16 @@ The curated lower crops already live at `data/segmented/lower_m3`:
 
 ```powershell
 python scripts/02_build_manifest.py --images data/segmented/lower_m3 --output outputs/manifests/lower_m3.csv
-python scripts/04_standardize_images.py --input data/segmented/lower_m3 --output data/standardized/lower_m3 --curation metadata/image_qc.csv
-python scripts/05_train_bioencoder.py --images data/standardized/lower_m3/rgb --allow-image-level-split --run-name proboscidean_lower_standardized_rgb_v1
-python scripts/06_plot_embeddings.py --run-name proboscidean_lower_standardized_rgb_v1 --title "Proboscidean lower M3 embeddings — standardized RGB dataset"
+.venv\Scripts\python.exe scripts/prepare_conservative_crops.py
+.venv\Scripts\python.exe scripts/run_dinov3_pilot.py --dataset lower --color rgb
 ```
 
-## Segmentation and quality control
+## Legacy segmentation and quality control
 
-Contour segmentation is local and deterministic. It fills the detected external silhouette
-while preserving original crown pixels, including dark enamel valleys and genuine breaks.
+The following segmentation tools remain for historical experiments; the default DINOv3
+workflow bypasses them. Their masks were observed to remove enamel and detached pieces.
+Conservative v2 crops use recorded rectangles and background exclusions instead.
+Contour segmentation is local and deterministic and fills the selected external silhouette.
 Recorded exceptions in `metadata/segmentation_overrides.csv` correct frames where a bright
 scale card is selected instead of the darker fossil.
 
@@ -117,12 +140,15 @@ guarantee a biologically valid crop.
 
 Use `--help` on any numbered script for all options.
 
-## Current pilot results
+## Historical BioEncoder pilot results
+
+These scores are from the previous trained BioEncoder workflow, not DINOv3.
 
 ### Lower M3
 
 After QC, the lower dataset contains 20 images representing 16 independent specimens:
-12 Love Bone Bed, two Mixson's Bone Bed, and two Tyner Farm. Background/pose standardization
+12 Love Bone Bed, two Mixson's Bone Bed, and two Tyner Farm. Tyner has four images: left/right
+teeth for catalog IDs UF-212304 and UF-217472. Background/pose standardization
 changed the two-dimensional PCA silhouette score from -0.146 to -0.062; grayscale produced
 -0.310. All are negative, so these runs do not show convincing locality separation.
 
@@ -148,14 +174,14 @@ not an independent sample. Mixson's pattern changes with projection and preproce
 - Do not interpret t-SNE axes, distances, or apparent clusters as inferential statistics.
 - Account for confounding among site, taxon, preservation, collection, and photography.
 
-BioEncoder 1.0.5 uses an image-level splitter. Stage 05 blocks repeated specimens and
-single-specimen classes by default; its override flags exist only for clearly labeled pilot
-experiments. Specimen-grouped evaluation is the next analytical milestone.
+Legacy BioEncoder 1.0.5 uses an image-level splitter. Its training script blocks repeated
+specimens and single-specimen classes by default; overrides were for pilot experiments.
+The DINOv3 workflow uses frozen features and specimen-level comparisons without training splits.
 
 ## Tests
 
 ```powershell
-python -m unittest discover -s tests -v
+.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
 ## Data and credits
@@ -167,5 +193,6 @@ Author: Aaron Gibson<br>
 Advisors: Arthur Porto and Advait Jukar<br>
 University of Florida
 
-BioEncoder should be cited using its authors' recommended citation. Specimens derive from the
+Use the [DINOv3 authors' citation](https://github.com/facebookresearch/dinov3#citation)
+for the current workflow, and BioEncoder's citation when reporting historical results. Specimens derive from the
 Florida Museum of Natural History and Smithsonian National Museum of Natural History collections.

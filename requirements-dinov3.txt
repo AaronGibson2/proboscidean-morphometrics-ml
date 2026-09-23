@@ -1,4 +1,4 @@
-# Frozen feature extraction and analysis; no BioEncoder dependency.
+# Frozen DINOv3 feature extraction, conservative cropping, and analysis.
 numpy>=1.26,<3
 Pillow>=10,<13
 tifffile>=2023.7.10

@@ -1,8 +1,8 @@
 # Frozen DINOv3 workflow
 
 This workflow uses Meta's pretrained DINOv3 ViT-B/16 as a frozen visual feature extractor.
-There is no encoder training, fine-tuning, optimizer, learned classification head, or
-BioEncoder dependency. Site labels are used only after extraction for exploratory comparison.
+There is no encoder training, fine-tuning, optimizer, or learned classification head.
+Site labels are used only after extraction for exploratory comparison.
 The original pilot used masks that removed visible tooth surfaces. The default now uses
 reviewed conservative crops on black backgrounds; see [image preparation](conservative-crops.md).
 The pretrained runs completed on 2026-09-23. See the
@@ -17,7 +17,7 @@ Use `.venv\Scripts\python.exe` directly; PowerShell activation is unnecessary.
 The installed/tested inference versions are PyTorch 2.5.1+cu121, torchvision 0.20.1+cu121,
 Transformers 4.57.6, and huggingface-hub 0.36.2. The GPU is an RTX 3070 with 8 GB VRAM.
 The inherited environment contains unrelated optional inference packages; use this venv for
-the DINOv3 scripts, and the original Conda environment for legacy tools.
+the DINOv3 scripts. The shared Conda environment is not managed by this project.
 
 For a fresh machine, create a Python 3.10/3.11 venv:
 

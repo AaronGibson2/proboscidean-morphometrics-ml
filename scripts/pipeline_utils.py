@@ -5,7 +5,6 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
-import random
 import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -17,8 +16,6 @@ RAW_DIR = DATA_DIR / "raw"
 PREPROCESSED_DIR = DATA_DIR / "preprocessed"
 SEGMENTED_DIR = DATA_DIR / "segmented"
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
-BIOENCODER_DIR = OUTPUTS_DIR / "bioencoder"
-CONFIG_DIR = PROJECT_ROOT / "bioencoder_configs"
 RAW_SUFFIXES = {".nef", ".tif", ".tiff"}
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".tif", ".tiff"}
 
@@ -43,22 +40,6 @@ def sha256(path: Path, chunk_size: int = 1024 * 1024) -> str:
 def write_json(path: Path, payload: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-
-
-def set_reproducible_seed(seed: int) -> None:
-    random.seed(seed)
-    try:
-        import numpy as np
-        np.random.seed(seed)
-    except ImportError:
-        pass
-    try:
-        import torch
-        torch.manual_seed(seed)
-        if torch.cuda.is_available():
-            torch.cuda.manual_seed_all(seed)
-    except ImportError:
-        pass
 
 
 def infer_specimen_id(filename: str) -> str:

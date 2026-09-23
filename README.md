@@ -1,214 +1,132 @@
-# Proboscidean Morphometrics ML
+﻿# Proboscidean Morphometrics ML
 
-A reproducible computer-vision pipeline for exploring morphological variation in Miocene
-proboscidean third molars from Love Bone Bed, Mixson's Bone Bed, and Tyner Farm.
+Exploring morphological variation in Miocene proboscidean third molars from **Love Bone Bed, Mixson's Bone Bed, and Tyner Farm** using pretrained DINOv3 features and specimen-level comparisons.
 
-This is research software under active development. Embedding plots are hypothesis-generating
-results, not taxonomic diagnoses or inferential evidence by themselves.
+The research asks whether tooth photographs contain a reproducible signal that distinguishes localities. Locality differences may motivate taxonomic hypotheses, but they do not establish different species. Independent anatomical evidence and verified taxon labels are needed to evaluate taxonomic discrimination.
 
-## Workflow
+## Current status
 
-1. Convert NEF/TIFF photographs to consistent 16-bit RGB TIFFs.
-2. Build an auditable image/specimen manifest with source hashes.
-3. Apply reviewed conservative crops and remove separate museum labels without thresholding tooth pixels.
-4. Preserve inclusion decisions; place whole crops on black canvases and generate comparison QC.
-5. Extract frozen pretrained DINOv3 features, with no training or fine-tuning.
-6. Compare independent specimens using cosine similarity, nearest neighbors, PCA, and label permutations.
+- **No model training or fine-tuning.** DINOv3 ViT-B/16 is a frozen feature extractor.
+- **37 photographs:** 17 upper M3 images representing 16 catalog IDs, and 20 lower M3 images representing 16 catalog IDs. Upper and lower teeth are analyzed separately; these counts should not be added to claim 32 distinct individuals across both datasets.
+- Conservative crops preserve dark enamel and detached pieces. Separate paper labels and scale cards are excluded; attached matrix and writing on teeth can remain.
+- Completed experiments compare whole-image features with crown-patch features at 224 and 512 pixels. Crown regions select output features without cutting pixels out of model inputs.
+- **Results remain exploratory.** No condition in the eight-way crown experiment survives correction for multiple comparisons. The project has not demonstrated species discrimination.
 
-Start with the [DINOv3 setup and run guide](docs/dinov3.md). Existing BioEncoder scripts and
-outputs are retained for historical comparison; they are not used by the DINOv3 workflow.
+## Code and findings
 
-The first frozen DINOv3 pilot is complete: [findings](docs/dinov3-pilot-results.md).
-Open `outputs/dinov3/index.html` locally to view all four reports and plots.
-The default now uses [conservative crops](docs/conservative-crops.md); the original masks
-removed real tooth surface. Review all 37 before/after images in `outputs/qc/crop_black_v2/index.html`.
+The DINOv3 implementation is currently on research branches. Select the experiment branch before running the commands below; this README update does not merge that code into `main`.
 
-The `dinov3/crown-patch-experiment` branch adds a fixed, training-free comparison of whole-image
-and crown-patch features at 224/512 pixels. See the [experiment protocol](docs/dinov3-crown-experiment.md)
-and [results](docs/dinov3-crown-results.md). These separate experiments preserve all pilot outputs.
+| Branch | Purpose |
+| --- | --- |
+| [`dinov3/conservative-crop-pilot`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/conservative-crop-pilot) | Frozen baseline, audited crop recipes, and pilot results |
+| [`dinov3/crown-patch-experiment`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/crown-patch-experiment) | Includes the pilot plus crown-patch pooling, resolution comparisons, and locality-balanced evaluation |
+
+Documentation links are pinned to the completed experiment revision so they work before the code is merged into `main`:
+
+- [DINOv3 setup and pilot workflow](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/dinov3.md)
+- [Conservative image preparation](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/conservative-crops.md)
+- [Pilot findings](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/dinov3-pilot-results.md)
+- [Crown experiment protocol](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/dinov3-crown-experiment.md)
+- [All eight crown experiment results](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/blob/04579f7/docs/dinov3-crown-results.md)
+
+## Latest results
+
+The primary metric is **macro locality recall**: average nearest-neighbor recall across localities with an independent same-site reference, giving each eligible locality equal weight.
+
+| Dataset | 224px macro recall | 512px macro recall | Constant-majority macro baseline |
+| --- | ---: | ---: | ---: |
+| Upper M3 | 66.7% | 75.0% | 50.0% |
+| Lower M3 | 44.4% | 33.3% | 33.3% |
+
+Whole-image and crown-patch features achieved the same recall within each resolution. Higher resolution improved the upper result descriptively, but worsened balanced retrieval for the lower teeth. No condition exceeded the majority baseline on ordinary accuracy. All eight Holm-adjusted permutation p-values were above 0.05; the apparent improvements are not confirmed effects.
+
+## Dataset and independence
+
+| Tooth position | Locality | Images | Catalog IDs |
+| --- | --- | ---: | ---: |
+| Upper M3 | Love Bone Bed | 12 | 12 |
+| Upper M3 | Mixson's Bone Bed | 3 | 3 |
+| Upper M3 | Tyner Farm | 2 | 1 |
+| Lower M3 | Love Bone Bed | 14 | 12 |
+| Lower M3 | Mixson's Bone Bed | 2 | 2 |
+| Lower M3 | Tyner Farm | 4 | 2 |
+
+The four lower Tyner photographs are paired teeth labeled `UF-212304` and `UF-217472`. Grouping is inferred from filenames and still requires collection-record confirmation. Features from photographs of one catalog ID are averaged before comparison, and a specimen cannot retrieve another photograph of itself as an independent neighbor.
+
+Upper Tyner remains in the reference pool but cannot be evaluated as a locality query because it has no second independent reference.
+
+## Run locally
+
+The repository contains code, recipes, tests, written findings, and an older set of lower-tooth JPEG crops. **The complete source dataset, pretrained weights, generated HTML reports, and feature caches are not included.** Reproduction requires matching source photographs at the paths and hashes recorded in the recipes.
+
+On Windows PowerShell, select the implementation branch:
 
 ```powershell
-.venv\Scripts\python.exe scripts/run_dinov3_crown_experiment.py --prepare-only
-# Inspect outputs/qc/crown_regions_v1/index.html before extraction.
-.venv\Scripts\python.exe scripts/run_dinov3_crown_experiment.py
+git fetch origin
+git switch dinov3/crown-patch-experiment
 ```
 
-The experiment uses the already cached checkpoint offline. Its reports are in
-`outputs/dinov3_crown_v1/index.html`. Completed experiments cannot be overwritten through
-this runner; use a new version for later region revisions. Sources, model weights, and
-generated outputs remain local; committed recipes, protocol, tests, and written results
-are shared on GitHub.
-
-Upper and lower M3s are processed and analyzed separately. All default paths resolve from
-the repository root, so scripts may be launched from any working directory.
-
-## Repository layout
-
-```text
-bioencoder_configs/       Legacy BioEncoder experiment configuration
-docs/                    DINOv3 setup, methods, and research notes
-data/
-  raw/                    Immutable source photographs (ignored by Git)
-  preprocessed/           Converted TIFFs and reports (ignored)
-  segmented/              Tooth crops and segmentation QC (ignored)
-  standardized/           Analysis-ready RGB and grayscale datasets (ignored)
-metadata/                 QC decisions, crop overrides, and specimen schema
-outputs/
-  bioencoder/             Dataset splits, weights, logs, coordinates, and plots (ignored)
-  dinov3/                 Frozen features, specimen comparisons, and reports (ignored)
-  qc/                     Contact sheets, masks, and processing reports (ignored)
-scripts/                  Numbered pipeline stages and shared utilities
-tests/                    Fast metadata/unit tests
-```
-
-Within `data/raw`, preserve `tooth_position/site/image`, for example:
-
-```text
-data/raw/Upper/Love Bone Bed Upper M3/UF-38252-01-UM3.nef
-data/raw/Lower/Tyner_Farm/UF-212304-RL_occlusal.tiff
-```
-
-Each standardized dataset contains one immediate directory per locality.
-
-## Installation
-
-Python 3.10 or 3.11 and CUDA-capable PyTorch are recommended for local inference.
-On the configured workstation, use the existing `.venv` directly. For a fresh environment:
+For a fresh environment, use Python 3.10 or 3.11 and install a compatible PyTorch/torchvision build for your hardware. On the configured workstation, use the existing `.venv` instead of creating it again.
 
 ```powershell
 python -m venv .venv
-.venv\Scripts\python.exe -m pip install --upgrade pip
 .venv\Scripts\python.exe -m pip install -r requirements-dinov3.txt
 ```
 
-Install the PyTorch build appropriate for the computer's CUDA version if the default package
-is unsuitable. `requirements.txt` retains the legacy/preprocessing dependencies, including
-BioEncoder. SAM3 is optional; install its dependencies only when needed.
+Follow the linked setup guide to obtain approved access to the pretrained weights and log in locally. Do not put access tokens in source code or commit them.
 
-Meta's pretrained weights require account access and a local Hugging Face login. After
-following the [access instructions](docs/dinov3.md#one-time-checkpoint-access):
+Prepare and inspect the conservative crops, then run the baseline:
 
 ```powershell
 .venv\Scripts\python.exe scripts/prepare_conservative_crops.py
+# Review outputs/qc/crop_black_v2/index.html.
 .venv\Scripts\python.exe scripts/run_dinov3_pilot.py --inventory-only
 .venv\Scripts\python.exe scripts/run_dinov3_pilot.py
 ```
 
-The second command runs upper/lower RGB/grayscale separately and writes local HTML reports
-under `outputs/dinov3/`. No model is trained.
-
-## Upper-M3 workflow
-
-Convert the upper originals if needed. The conservative crop builder uses these TIFFs
-directly and also prepares the existing lower JPEGs. If the v2 images already exist,
-skip directly to DINOv3:
+Prepare and inspect the crown regions, then run the fixed eight-condition experiment:
 
 ```powershell
-python scripts/01_convert_nefs.py --input data/raw/Upper --output data/preprocessed/upper_m3
-python scripts/02_build_manifest.py --images data/preprocessed/upper_m3 --output outputs/manifests/upper_m3.csv
-.venv\Scripts\python.exe scripts/prepare_conservative_crops.py
-.venv\Scripts\python.exe scripts/run_dinov3_pilot.py --dataset upper --color rgb
+.venv\Scripts\python.exe scripts/run_dinov3_crown_experiment.py --prepare-only
+# Review outputs/qc/crown_regions_v1/index.html.
+.venv\Scripts\python.exe scripts/run_dinov3_crown_experiment.py
 ```
 
-The current Tyner upper sample is one individual represented by left and right teeth.
-DINOv3 analysis combines those images into one specimen and marks its locality recognition
-as unsupported because no independent same-site reference remains.
+The crown experiment uses the cached checkpoint offline. Skip preparation when matching inputs already exist. Completed experiments are protected against overwrite; use a new version for later changes to crown regions or methods.
 
-For the grayscale control, use the same standardized dataset:
+## Local reports and validation
 
-```powershell
-.venv\Scripts\python.exe scripts/run_dinov3_pilot.py --dataset upper --color grayscale
-```
+| Local file | Contents |
+| --- | --- |
+| `outputs/qc/crop_black_v2/index.html` | Source / old / revised image comparisons |
+| `outputs/dinov3/index.html` | Conservative-crop pilot overview |
+| `outputs/qc/crown_regions_v1/index.html` | Contributing crown patches at both resolutions |
+| `outputs/dinov3_crown_v1/index.html` | All eight experimental conditions and individual reports |
 
-Add `--overwrite` to stages 01, 03, 05, or 06 only when intentionally replacing existing
-derived outputs or runs. Stage 04 regenerates its included outputs when invoked.
-
-## Lower-M3 workflow
-
-The curated lower crops already live at `data/segmented/lower_m3`:
-
-```powershell
-python scripts/02_build_manifest.py --images data/segmented/lower_m3 --output outputs/manifests/lower_m3.csv
-.venv\Scripts\python.exe scripts/prepare_conservative_crops.py
-.venv\Scripts\python.exe scripts/run_dinov3_pilot.py --dataset lower --color rgb
-```
-
-## Legacy segmentation and quality control
-
-The following segmentation tools remain for historical experiments; the default DINOv3
-workflow bypasses them. Their masks were observed to remove enamel and detached pieces.
-Conservative v2 crops use recorded rectangles and background exclusions instead.
-Contour segmentation is local and deterministic and fills the selected external silhouette.
-Recorded exceptions in `metadata/segmentation_overrides.csv` correct frames where a bright
-scale card is selected instead of the darker fossil.
-
-To try SAM3, put the credential in the process environment—never in source code:
-
-```powershell
-$env:ROBOFLOW_API_KEY = "your_key"
-python scripts/03_segment_all.py --input data/preprocessed/upper_m3 --output data/segmented/upper_m3 --method auto --overwrite
-```
-
-`auto` attempts SAM3 and falls back to contours. Inspect the segmentation QC under
-`data/segmented/qc` and standardization masks/contact sheets under `outputs/qc`. Record every
-inclusion or exclusion in the appropriate metadata QC file. Successful processing does not
-guarantee a biologically valid crop.
-
-Use `--help` on any numbered script for all options.
-
-## Historical BioEncoder pilot results
-
-These scores are from the previous trained BioEncoder workflow, not DINOv3.
-
-### Lower M3
-
-After QC, the lower dataset contains 20 images representing 16 independent specimens:
-12 Love Bone Bed, two Mixson's Bone Bed, and two Tyner Farm. Tyner has four images: left/right
-teeth for catalog IDs UF-212304 and UF-217472. Background/pose standardization
-changed the two-dimensional PCA silhouette score from -0.146 to -0.062; grayscale produced
--0.310. All are negative, so these runs do not show convincing locality separation.
-
-### Upper M3
-
-Strict QC retained 17 images: 12 independent Love Bone Bed specimens, three independent
-Mixson's Bone Bed specimens, and two contralateral teeth from one Tyner Farm individual.
-After fixing destructive thresholding so internal crown detail was preserved, RGB embeddings
-produced silhouette scores of 0.024 in PCA and 0.077 in t-SNE; grayscale produced -0.045 and
-0.048. The mildly positive t-SNE values are driven mainly by the close Tyner pair, which is
-not an independent sample. Mixson's pattern changes with projection and preprocessing.
-
-## Scientific validity
-
-- Keep raw photographs immutable.
-- Treat specimens—not photographs or contralateral teeth—as independent observations.
-- Do not place views from one specimen in both training and validation for final evaluation.
-- Verify filename-derived metadata against museum records.
-- Record site, catalog number, tooth position, side, scale, wear, preservation, photography
-  batch, and every processing decision.
-- Compare neural embeddings with conventional morphometric baselines.
-- Use specimen-grouped repeated validation, confidence intervals, and permutation tests.
-- Do not interpret t-SNE axes, distances, or apparent clusters as inferential statistics.
-- Account for confounding among site, taxon, preservation, collection, and photography.
-
-Legacy BioEncoder 1.0.5 uses an image-level splitter. Its training script blocks repeated
-specimens and single-specimen classes by default; overrides were for pilot experiments.
-The DINOv3 workflow uses frozen features and specimen-level comparisons without training splits.
-
-## Tests
+These paths refer to generated local files, not hosted GitHub pages. Individual runs record input hashes, checkpoint revision, crop/region provenance, and specimen-level results.
 
 ```powershell
 .venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-## Data and credits
+The experiment revision passed 25 local tests. Tests involving private photographs or optional model dependencies can skip when those resources are absent.
 
-Source specimens and photographs are controlled by their institutions and are not distributed
-through this repository. Confirm permissions before sharing derived imagery.
+## Limitations and next steps
 
-Author: Aaron Gibson<br>
-Advisors: Arthur Porto and Advait Jukar<br>
-University of Florida
+The sample is small and uneven across localities. Wear, staining, preservation, attached matrix, and photography may influence similarities. Some lower source photographs already cut through specimen margins; cropping cannot recover missing anatomy. Crown regions are provisional assistant-drawn annotations awaiting anatomical review.
 
-Use the [DINOv3 authors' citation](https://github.com/facebookresearch/dinov3#citation)
-for the current workflow, and BioEncoder's citation when reporting historical results. Specimens derive from the
-Florida Museum of Natural History and Smithsonian National Museum of Natural History collections.
+Next priorities are verifying specimen metadata, recording wear/preservation and reliable morphometric measurements, evaluating anatomically comparable tooth regions, and obtaining additional independent specimens from the smaller locality samples. PCA and neighbor panels support inspection; attractive clusters alone do not establish biological or taxonomic groups.
+
+## Image preparation and credits
+
+Automatic masks were found to remove real tooth structure, which motivated the conservative-crop revision. The current workflow uses reviewed crops and frozen DINOv3 features throughout.
+
+Source specimens and photographs are controlled by their institutions; repository inclusion does not grant redistribution rights. Specimens derive from the Florida Museum of Natural History and Smithsonian National Museum of Natural History collections.
+
+**Author:** Aaron Gibson
+
+**Advisors:** Arthur Porto and Advait Jukar
+
+**Institution:** University of Florida
+
+Use the [DINOv3 authors' citation](https://github.com/facebookresearch/dinov3#citation) when reporting the current method.

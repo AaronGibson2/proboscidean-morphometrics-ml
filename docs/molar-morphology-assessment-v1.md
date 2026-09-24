@@ -4,7 +4,7 @@
 
 **The useful finding is that we already have candidate reference specimens in our dataset. The immediate priority is to verify those references and compare tooth anatomy, rather than treating locality as a species label.** Some teeth remain compatible with multiple groups; this review does not establish an additional species.
 
-Open the local **[visual tooth review](../outputs/morphology_literature_v1/index.html)** for the actual photographs, individual observations and evidence filters. It is generated on this workstation, not hosted on GitHub. The [primary-literature guide](molar-taxonomy-primary-literature.md) contains the detailed character definitions, paper links and figure/table locations.
+Open the **[GitHub photo gallery](morphology-gallery-v1/README.md)** for all 37 photographs and observations, or download its standalone HTML to use the interactive filters. The original **[local visual tooth review](../outputs/morphology_literature_v1/index.html)** remains available on this workstation. The [primary-literature guide](molar-taxonomy-primary-literature.md) contains the detailed character definitions, paper links and figure/table locations.
 
 ## What we should look for
 
@@ -86,4 +86,4 @@ This would test whether DINOv3 follows anatomical evidence. The current screenin
 .venv\Scripts\python.exe scripts/build_morphology_review.py
 ```
 
-The builder checks source-photo hashes, recreates previews from existing crop recipes and writes `outputs/morphology_literature_v1/index.html`, a specimen evidence CSV and an audit summary. It needs the local source images. Code, literature notes and evidence metadata are tracked; generated photo reports remain in ignored `outputs/`. Original metadata inventories, model features and historical results are unchanged.
+The builder checks source-photo hashes, recreates previews from existing crop recipes and writes `outputs/morphology_literature_v1/index.html`, a specimen evidence CSV and an audit summary. It needs the local source images. To rebuild the committed shareable snapshot, run `.venv\Scripts\python.exe scripts/export_morphology_gallery.py`. That exports a GitHub-readable gallery, compressed viewing images and standalone HTML to `docs/morphology-gallery-v1/`, with provenance hashes. Generated working reports remain in ignored `outputs/`. Original metadata inventories, model features and historical results are unchanged.

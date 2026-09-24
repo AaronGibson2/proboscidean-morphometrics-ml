@@ -17,7 +17,8 @@ The research asks whether tooth photographs contain a reproducible signal that d
 **New: [molar morphology and specimen identity review](docs/molar-morphology-assessment-v1.md).**
 This connects the published anatomical comparisons to our photos and 27 UF catalog records.
 It flags a tooth-position conflict for UF 212304, distinguishes catalog evidence from new
-identifications, and links a local visual review of all 37 photos. No new taxa were assigned.
+identifications, and includes a [GitHub photo gallery of all 37 photos](docs/morphology-gallery-v1/README.md)
+plus a downloadable interactive HTML version. No new taxa were assigned.
 The [primary-literature guide](docs/molar-taxonomy-primary-literature.md) explains the characters
 and competing treatments of *floridanus*. These additions are on `morphology/literature-audit-v1`.
 
@@ -159,6 +160,11 @@ for review instructions and the exact-cache reproduction requirements.
 | `outputs/morphology_literature_v1/index.html` | All 37 photos with visibility notes and catalog/literature evidence; build with `scripts/build_morphology_review.py` |
 
 These paths refer to generated local files, not hosted GitHub pages. Individual runs record input hashes, checkpoint revision, crop/region provenance, and specimen-level results.
+
+The morphology review also has a committed [shareable gallery](docs/morphology-gallery-v1/README.md).
+Its standalone `index.html` embeds the viewing images and works after download.
+Rebuild that snapshot with `.venv\Scripts\python.exe scripts/export_morphology_gallery.py`.
+Other generated reports remain local.
 
 ```powershell
 .venv\Scripts\python.exe -m unittest discover -s tests -v

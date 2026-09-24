@@ -4,3 +4,4 @@
 *.yaml text eol=lf
 *.md text eol=lf
 *.csv text eol=lf
+docs/morphology-gallery-v1/*.html text eol=lf

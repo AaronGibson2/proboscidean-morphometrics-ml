@@ -1,21 +1,28 @@
 # Understanding and comparing the DINOv3 results
 
-Results through September 23, 2026. This guide covers **24 analytical conditions in four experiment families**, all using frozen DINOv3 features. They reuse the same photographs; they are not 24 independent replications.
+For a simpler explanation with graphs, start with the [visual guide](dinov3-visual-guide.md).
+
+Results through September 23, 2026. This guide covers **36 reported condition rows in five experiment families**: the original 24 plus 12 regional evaluations, four of which reuse CLS baselines. Targets also reuse features. These are repeated analyses of the same photographs, not independent replications.
 
 **The strongest exploratory result is upper teeth at 512px using whole-image features for Love versus Mixson + Tyner: 13/16 correct neighbors (81.2% overall agreement) and 79.2% balanced recall. However, no condition in either eight-condition experiment passes the multiple-comparison correction. We have not established reliable locality discrimination or species identification.** The lower teeth remain especially unpromising with these feature summaries.
 
 ## Where the results live
 
+**Latest regional experiment:** regional averages raise upper three-locality macro recall
+from 75.0% to 79.2% (13/15 correct), but worsen the provisional grouping. Lower results
+do not improve. None of the 12 evaluations survives correction. See section 5 and the
+[regional results and review instructions](dinov3-regional-results-v1.md).
+
 | Material | Available in this repository? | Location |
 | --- | --- | --- |
-| This explanation and all 24 comparison rows | Yes | `docs/results-summary.md` |
-| Exact numerical results, original JSON snapshots and source-file hashes | Yes | [Numerical results](results/numerical-results.json) |
+| This explanation and all 36 comparison rows | Yes | `docs/results-summary.md` |
+| Exact numerical results and source-file hashes | Yes | [First 24 rows](results/numerical-results.json); [12 regional evaluations](results/regional-results-v1.json) |
 | Detailed pilot, crown and provisional-group findings | Yes | Linked in the experiment sections below |
 | Code, crop recipes, crown regions and hypothesis mapping | Yes | `scripts/` and `metadata/` |
 | Full HTML reports, tooth panels, PCA plots, neighbor tables and feature caches | Local only | `outputs/` (ignored by Git) |
 | Complete source photographs and pretrained weights | No | Local dataset folders and model cache; an older lower-tooth JPEG subset is tracked |
 
-The consolidated guide and numerical snapshots are on the `dinov3/provisional-group-comparison` branch. They appear on GitHub's default `main` page after that branch is merged. The earlier pilot and crown implementation already reached `main` through PR #1. Creating a pull request alone does not merge it.
+This edition is on `dinov3/regional-matching-v1`; the previous edition is on `dinov3/provisional-group-comparison`. Changes appear on GitHub's default `main` page after their branch is merged. The earlier pilot and crown implementation reached `main` through PR #1. Creating a pull request alone does not merge it.
 
 For the full visual reports on this workstation, open:
 
@@ -23,6 +30,7 @@ For the full visual reports on this workstation, open:
 - `outputs/dinov3/index.html`: conservative-crop pilot.
 - `outputs/dinov3_crown_v1/index.html`: crown and resolution experiment.
 - `outputs/dinov3_group_hypothesis_v1/index.html`: provisional grouping experiment.
+- `outputs/dinov3_regional_v1/index.html`: regional comparisons; `review.html` in the same folder shows proposed correspondences.
 - `outputs/qc/crop_black_v2/index.html` and `outputs/qc/crown_regions_v1/index.html`: image and region quality checks.
 
 These paths are files on this computer, not public website addresses. The numerical snapshot makes the results readable on GitHub without requiring the photographs, model download or a rerun.
@@ -136,6 +144,29 @@ This does not show that upper teeth can be identified to species with 79.2% accu
 
 Details and the source motivating the hypothesis: [provisional-group findings](dinov3-group-hypothesis-results.md).
 
+## 5. Regional matching: 12 evaluations
+
+Question: can three geometric crown regions retain useful information lost by whole-crown averaging? All methods reuse frozen 512px RGB features. `regional_mean` compares three regional averages; `regional_patch` uses bidirectional best patch matches within corresponding bands. Both allow reversed band order without consulting labels. These regions are not verified anatomical landmarks.
+
+| Position | Target | Method | Macro recall | Overall agreement | Raw exact p | Holm p (12) |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| upper | locality | cls | 75.0% | 12/15 (80.0%) | 0.0390 | 0.3901 |
+| upper | locality | regional_mean | 79.2% | 13/15 (86.7%) | 0.0242 | 0.2901 |
+| upper | locality | regional_patch | 66.7% | 10/15 (66.7%) | 0.0791 | 0.6330 |
+| upper | provisional_group | cls | 79.2% | 13/16 (81.2%) | 0.0291 | 0.3203 |
+| upper | provisional_group | regional_mean | 70.8% | 13/16 (81.2%) | 0.0703 | 0.6330 |
+| upper | provisional_group | regional_patch | 58.3% | 10/16 (62.5%) | 0.2275 | 1.0000 |
+| lower | locality | cls | 33.3% | 12/16 (75.0%) | 0.2670 | 1.0000 |
+| lower | locality | regional_mean | 30.6% | 11/16 (68.8%) | 0.2885 | 1.0000 |
+| lower | locality | regional_patch | 30.6% | 11/16 (68.8%) | 0.3251 | 1.0000 |
+| lower | provisional_group | cls | 50.0% | 12/16 (75.0%) | 0.3868 | 1.0000 |
+| lower | provisional_group | regional_mean | 45.8% | 11/16 (68.8%) | 0.5181 | 1.0000 |
+| lower | provisional_group | regional_patch | 45.8% | 11/16 (68.8%) | 0.5335 | 1.0000 |
+
+Upper locality regional averages gain one net correct specimen (13/15 versus 12/15). Love improves from 10/12 to 11/12; Mixson stays at 2/3. But upper Tyner switches to a Love neighbor, lowering provisional-group minority recall from 3/4 to 2/4. This explains why the same method can improve locality macro recall while worsening the proposed grouping. Lower minority recall stays at zero; regional patch matching does not improve either position over CLS.
+
+No Holm value passes 0.05. Locality tests now enumerate all assignments rather than sampling permutations, and correction covers 12 rows; unchanged CLS baseline scores therefore have different p-values from earlier tables. Changes in score are descriptive, not paired superiority tests. Full per-group counts, 43 local review panels, draft inventories and reproduction instructions are in the [regional results](dinov3-regional-results-v1.md).
+
 ## What changed across experiments
 
 | Experiment | Change being explored | What the results support |
@@ -144,6 +175,7 @@ Details and the source motivating the hypothesis: [provisional-group findings](d
 | Conservative crops, 4 conditions | Better-preserved tooth images and black backgrounds | Better inputs for anatomical review, but no clearer statistical separation |
 | Crown / resolution, 8 conditions | CLS versus crown features; 224 versus 512px | Upper 512px has better descriptive balanced recall; crown pooling adds no recall benefit; lower 512px fails the smaller sites |
 | Provisional groups, 8 conditions | Love versus combined Mixson + Tyner, using unchanged features | Upper 512px CLS is worth investigating; lower failure persists; no corrected evidence or verified taxonomic result |
+| Regional matching, 12 evaluations (including 4 reused baselines) | Three geometric crown bands, regional averages and local patch matches | One net extra correct upper-locality query with regional averages; provisional-group and lower scores do not improve; no corrected evidence |
 
 We should preserve the more faithful crops even though they did not raise the scores. Among the feature comparisons, higher-resolution upper CLS deserves further anatomical inspection; it is a candidate for follow-up, not a validated winning model. The present data do not support announcing distinct species or reliable site grouping.
 
@@ -151,6 +183,6 @@ The next useful work is to verify the catalog IDs and proposed taxon assignments
 
 ## Scientific conditions versus software tests
 
-The implementation passed **28 local software tests** at the analysis revision. Those tests check behavior such as specimen aggregation, region pooling and permutation calculations. Passing them does not mean the teeth separate biologically. This guide's **24 conditions** are scientific analyses of the same small dataset; they are separate from the software-test count.
+The regional implementation passed **35 local software tests**. Those tests check behavior such as specimen aggregation, region pooling and permutation calculations. Passing them does not mean the teeth separate biologically. This guide's **36 reported condition rows**, including reused baselines, are separate from the software-test count.
 
 This document summarizes existing outputs; it does not rerun inference or change any labels, crops, features or frozen protocols. The [numerical snapshot](results/numerical-results.json) records the source-code revision and SHA-256 hashes of the 18 original JSON files used for these tables, including all 24 conditions. Pilot p-values refer to cosine contrast; the crown/group comparison p-values refer to macro recall. The crown per-run summaries also contain secondary cosine p-values, which must not be substituted for the primary macro tests.

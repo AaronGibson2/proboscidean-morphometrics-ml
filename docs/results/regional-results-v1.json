@@ -1,0 +1,447 @@
+{
+  "experiment": "dinov3_regional_v1",
+  "trained": false,
+  "anatomical_regions_verified": false,
+  "taxon_assignments_verified": false,
+  "input_and_code_hashes": {
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/000.npz": "35a71ff7858e4ee32fac369bcc34304ea8f95e54af0a479fe9ae4e944681d4e5",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/001.npz": "2d541fc90bd07eadbd13f7037b1a95971a119bbf74433254f5b0ecd2edbb2d40",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/002.npz": "11e758c14614c7395c5aa4e0cad83676e881eb6e5e972674f9f55190acd7003d",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/003.npz": "1087994c70318e6dc7db5cf26d080757b872e082031fc40ca84213e1ecef7156",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/004.npz": "4b6e40887e18140ff538e848067d29b1e42b50ab61316253999f809818736478",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/005.npz": "e98f23421c888692d216e94ae90bd75396d6ce37dee904e35dc487443aae7972",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/006.npz": "43c7304c3fdc337e2c26a20782282def1a327cc36b69232263a185fb997769cd",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/007.npz": "ae668f66ea2e526ad1ff76342d869bf9b0bd1450a001432b4570dccbfcebf52e",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/008.npz": "699949ab55e20d06b381fd4d892cfc786851b22d9095c47f60f4216333ee1c32",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/009.npz": "f66538267028c32e1e27deafe888dc514f12ad1959d1f9411c43f13489a0a9bb",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/010.npz": "b87f3ca337905a9acfd5cb76ad6315793f754f81203f427cc9f119f69e4ba869",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/011.npz": "294a9d1ef98a69b9868501c2ec3f38fed04b7b811337ad2a1fe57814b387df1d",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/012.npz": "c4ba0a410be3c5e9f51711d6d66a5205211313dc806132ba89d253abd220e28a",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/013.npz": "f4174dc04af5a4b834f60eb84fae927f2be392d72ac11a47eb49e51bbfd5db76",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/014.npz": "9128a2a440c8b0004d593dbfbff553df97a846aebd7240606c3338829be1e4c1",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/015.npz": "cf9e67214dd36830ee756fda0aa3d861f4df7a01850fdd9d652d6a3563257bbd",
+    "outputs/dinov3_crown_v1/upper_patch_tokens_512/016.npz": "e6e4d6fac243c1133cc7c57c6db4fdc678d7de1a8ab4a437fd4e243ff8161750",
+    "outputs/dinov3_crown_v1/upper_cls_512/embeddings.npz": "9a67520eb530c69a7b0dba6e2f351d01316733b4883e9b5d2e4d4158088952d1",
+    "outputs/dinov3_crown_v1/upper_crown_512/embeddings.npz": "45b7d45f97bbf194d0e392a8e7a5aa0a84a14a444ed975432b41229d09980572",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/000.npz": "809d08190c31430163b0dab1471694e5847c6632c35d58a671b10986a16cd32d",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/001.npz": "3c1889825ad76013f0e6a4e4303eab0aa74d5987a082555c94eda659801d6296",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/002.npz": "aee194a5309987db6451a4f2495afd0e93be07a97b195629faa7c27d2745e4e5",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/003.npz": "4605bbc0572f56ee7078db5971cf25eea75373aae533bd2840233d006fe3d279",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/004.npz": "e5df2d7c1e67ae43c872f8bfbdcf2f56438d2fbcab3dfea2bc221757d725af96",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/005.npz": "4d5051f27d53da84294d0c7e8ee3bc6d9a3e3f2a9f924aff73b0a88a73c26aa9",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/006.npz": "d1402796acd50af074913501744078bba703efa6df0fa65cfda7dda4dc7ac210",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/007.npz": "a9bc86ab160d48487bb2d1960bc8295558786910e3188bc609d5f29e7f16645d",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/008.npz": "f49103c507ea5b88fca6656e74e1fc3b9688276a9166f810f4f1fbf1a82aa737",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/009.npz": "cf40e2ea4a20d62d06f1e57aca852017dfdc4d22fc536f05346294a6869b5a5e",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/010.npz": "79a126fc57e9ef3449cb1a21ba53ec8cbb710bfa90863d8767cdc4abeb4eceb9",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/011.npz": "878706fac3b6e6eb089e042b827e9a31c755d74dadd361822d76b32f391e5e69",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/012.npz": "b04b1d8e619f3dcab35d053a2f93083b19bdfa4ed8728851f8ee383ec38adb9f",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/013.npz": "0c7e36c36c19b29dadb6eb0ccb411a55c8b76996e58ec3bea5364e3f7408612b",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/014.npz": "9b0a308aea6110f27bc896bb80ddd460115b97e5eaad2146f4818f4d0251ed50",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/015.npz": "1adaadb7d74c5d935fe97b96f6813d8d8664835e79ed5f13852164f1d943f99a",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/016.npz": "3e051fb59f1a1f659d44ff35ad1da032dc4a5b809065bcd564a6745cf0963f50",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/017.npz": "a5a9053bf83188b0c5c2a99e3c4f8fc5db61cef57bacc64f1a19f2ee1172e869",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/018.npz": "14f86713e8abf645b538634c9ca0e876cb7a7a26a502c5174ed864164b95480b",
+    "outputs/dinov3_crown_v1/lower_patch_tokens_512/019.npz": "8240bd78153af42bf0cf724d84a0a5106522f11862836d1ef5eabfa2594b7864",
+    "outputs/dinov3_crown_v1/lower_cls_512/embeddings.npz": "d77bdfbd73aa5e135d0f00d0896fcd90844bc679b3bbbe1b214ad62209cfa01b",
+    "outputs/dinov3_crown_v1/lower_crown_512/embeddings.npz": "d4ef9cd03044db8744d7cd30b3e9f13db111ab96a6adc02232a36c0f768c11c0",
+    "docs/dinov3-regional-protocol-v1.md": "8ac8cfe94088edbe2dc928f9227704b4fd39abe0a7f598659fba15cb3a617fb4",
+    "metadata/conservative_crops_v2.json": "d28d81be35d2bd67ed8896b06816d4208b7c27bc13d5e8c2d293e35e47b37ee0",
+    "metadata/crown_regions_v1.json": "70f73433a86719d34612e4d8ea0d86c9a18028c17e5bd13ad8ce509c7de51e03",
+    "metadata/locality_group_hypothesis_v1.json": "fbcb46c056030478eb784e954d6deb0f83fc095bc39e3e19281ad76591af2f84",
+    "metadata/specimen_review_v1.csv": "b9c766a785fcc8b72c01cbd8ea96fa5b5836497e48bcf3b8b6cda90ff17a4776",
+    "metadata/image_review_v1.csv": "640ca90f82cc49e06339b98ca49658855b044b76bd5c7b97304e56a63b65dd1a",
+    "metadata/regional_inputs_v1.json": "3e902c87c6fa15036c5fac85739425628e01c0177d8270f069ea2bd37979bd79",
+    "scripts/run_dinov3_regional.py": "a06fc9b6c1318442a7e24e9457d3b34ddd66ba000f125560e9063d1ba71e56f6",
+    "scripts/dinov3_regional.py": "29cbc79232e7f2b4f5ec86df32533c698cfabfb7cb221247965acfc5613c364f",
+    "scripts/dinov3_pipeline.py": "99ef83e0f99bce916d8d76d3c087ac58f61b410eccc7be76e368df14b55ca0db",
+    "scripts/dinov3_crown.py": "2bb97e2b519df5507e744f012f4893cb37ed950bac3ba84e287fbfc53d1716aa",
+    "scripts/pipeline_utils.py": "20003399a01a54db6591ab2084aefae0a682fcf6e038821f95845f8a3f4c0fc3"
+  },
+  "results": [
+    {
+      "position": "upper",
+      "target": "locality",
+      "method": "cls",
+      "macro_recall": 0.75,
+      "ordinary_accuracy": 0.8,
+      "correct": 12,
+      "eligible_specimens": 15,
+      "per_group": {
+        "Love Bone Bed Upper M3": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 10,
+          "recall": 0.8333333333333334
+        },
+        "Mixson's Bone Bed": {
+          "specimens": 3,
+          "eligible": true,
+          "correct": 2,
+          "recall": 0.6666666666666666
+        },
+        "Tyner Farm": {
+          "specimens": 1,
+          "eligible": false,
+          "correct": null,
+          "recall": null
+        }
+      },
+      "majority_macro_baseline": 0.5,
+      "majority_accuracy_baseline": 0.8,
+      "exact_p": 0.03901098901098901,
+      "assignments": 7280,
+      "macro_delta_from_cls": 0.0,
+      "holm_p_twelve_conditions": 0.3901098901098901
+    },
+    {
+      "position": "upper",
+      "target": "locality",
+      "method": "regional_mean",
+      "macro_recall": 0.7916666666666666,
+      "ordinary_accuracy": 0.8666666666666667,
+      "correct": 13,
+      "eligible_specimens": 15,
+      "per_group": {
+        "Love Bone Bed Upper M3": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 11,
+          "recall": 0.9166666666666666
+        },
+        "Mixson's Bone Bed": {
+          "specimens": 3,
+          "eligible": true,
+          "correct": 2,
+          "recall": 0.6666666666666666
+        },
+        "Tyner Farm": {
+          "specimens": 1,
+          "eligible": false,
+          "correct": null,
+          "recall": null
+        }
+      },
+      "majority_macro_baseline": 0.5,
+      "majority_accuracy_baseline": 0.8,
+      "exact_p": 0.024175824175824177,
+      "assignments": 7280,
+      "macro_delta_from_cls": 0.04166666666666663,
+      "holm_p_twelve_conditions": 0.29010989010989013
+    },
+    {
+      "position": "upper",
+      "target": "locality",
+      "method": "regional_patch",
+      "macro_recall": 0.6666666666666666,
+      "ordinary_accuracy": 0.6666666666666666,
+      "correct": 10,
+      "eligible_specimens": 15,
+      "per_group": {
+        "Love Bone Bed Upper M3": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 8,
+          "recall": 0.6666666666666666
+        },
+        "Mixson's Bone Bed": {
+          "specimens": 3,
+          "eligible": true,
+          "correct": 2,
+          "recall": 0.6666666666666666
+        },
+        "Tyner Farm": {
+          "specimens": 1,
+          "eligible": false,
+          "correct": null,
+          "recall": null
+        }
+      },
+      "majority_macro_baseline": 0.5,
+      "majority_accuracy_baseline": 0.8,
+      "exact_p": 0.07912087912087912,
+      "assignments": 7280,
+      "macro_delta_from_cls": -0.08333333333333337,
+      "holm_p_twelve_conditions": 0.6329670329670329
+    },
+    {
+      "position": "upper",
+      "target": "provisional_group",
+      "method": "cls",
+      "macro_recall": 0.7916666666666667,
+      "ordinary_accuracy": 0.8125,
+      "correct": 13,
+      "eligible_specimens": 16,
+      "per_group": {
+        "Love": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 10,
+          "recall": 0.8333333333333334
+        },
+        "Mixson + Tyner": {
+          "specimens": 4,
+          "eligible": true,
+          "correct": 3,
+          "recall": 0.75
+        }
+      },
+      "majority_macro_baseline": 0.5,
+      "majority_accuracy_baseline": 0.75,
+      "exact_p": 0.02912087912087912,
+      "assignments": 1820,
+      "macro_delta_from_cls": 0.0,
+      "holm_p_twelve_conditions": 0.32032967032967036
+    },
+    {
+      "position": "upper",
+      "target": "provisional_group",
+      "method": "regional_mean",
+      "macro_recall": 0.7083333333333333,
+      "ordinary_accuracy": 0.8125,
+      "correct": 13,
+      "eligible_specimens": 16,
+      "per_group": {
+        "Love": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 11,
+          "recall": 0.9166666666666666
+        },
+        "Mixson + Tyner": {
+          "specimens": 4,
+          "eligible": true,
+          "correct": 2,
+          "recall": 0.5
+        }
+      },
+      "majority_macro_baseline": 0.5,
+      "majority_accuracy_baseline": 0.75,
+      "exact_p": 0.07032967032967033,
+      "assignments": 1820,
+      "macro_delta_from_cls": -0.08333333333333348,
+      "holm_p_twelve_conditions": 0.6329670329670329
+    },
+    {
+      "position": "upper",
+      "target": "provisional_group",
+      "method": "regional_patch",
+      "macro_recall": 0.5833333333333333,
+      "ordinary_accuracy": 0.625,
+      "correct": 10,
+      "eligible_specimens": 16,
+      "per_group": {
+        "Love": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 8,
+          "recall": 0.6666666666666666
+        },
+        "Mixson + Tyner": {
+          "specimens": 4,
+          "eligible": true,
+          "correct": 2,
+          "recall": 0.5
+        }
+      },
+      "majority_macro_baseline": 0.5,
+      "majority_accuracy_baseline": 0.75,
+      "exact_p": 0.22747252747252747,
+      "assignments": 1820,
+      "macro_delta_from_cls": -0.20833333333333348,
+      "holm_p_twelve_conditions": 1.0
+    },
+    {
+      "position": "lower",
+      "target": "locality",
+      "method": "cls",
+      "macro_recall": 0.3333333333333333,
+      "ordinary_accuracy": 0.75,
+      "correct": 12,
+      "eligible_specimens": 16,
+      "per_group": {
+        "Love_Bone_Bed": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 12,
+          "recall": 1.0
+        },
+        "Mixsons_Bone_Bed": {
+          "specimens": 2,
+          "eligible": true,
+          "correct": 0,
+          "recall": 0.0
+        },
+        "Tyner_Farm": {
+          "specimens": 2,
+          "eligible": true,
+          "correct": 0,
+          "recall": 0.0
+        }
+      },
+      "majority_macro_baseline": 0.3333333333333333,
+      "majority_accuracy_baseline": 0.75,
+      "exact_p": 0.26703296703296703,
+      "assignments": 10920,
+      "macro_delta_from_cls": 0.0,
+      "holm_p_twelve_conditions": 1.0
+    },
+    {
+      "position": "lower",
+      "target": "locality",
+      "method": "regional_mean",
+      "macro_recall": 0.3055555555555555,
+      "ordinary_accuracy": 0.6875,
+      "correct": 11,
+      "eligible_specimens": 16,
+      "per_group": {
+        "Love_Bone_Bed": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 11,
+          "recall": 0.9166666666666666
+        },
+        "Mixsons_Bone_Bed": {
+          "specimens": 2,
+          "eligible": true,
+          "correct": 0,
+          "recall": 0.0
+        },
+        "Tyner_Farm": {
+          "specimens": 2,
+          "eligible": true,
+          "correct": 0,
+          "recall": 0.0
+        }
+      },
+      "majority_macro_baseline": 0.3333333333333333,
+      "majority_accuracy_baseline": 0.75,
+      "exact_p": 0.28846153846153844,
+      "assignments": 10920,
+      "macro_delta_from_cls": -0.02777777777777779,
+      "holm_p_twelve_conditions": 1.0
+    },
+    {
+      "position": "lower",
+      "target": "locality",
+      "method": "regional_patch",
+      "macro_recall": 0.3055555555555555,
+      "ordinary_accuracy": 0.6875,
+      "correct": 11,
+      "eligible_specimens": 16,
+      "per_group": {
+        "Love_Bone_Bed": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 11,
+          "recall": 0.9166666666666666
+        },
+        "Mixsons_Bone_Bed": {
+          "specimens": 2,
+          "eligible": true,
+          "correct": 0,
+          "recall": 0.0
+        },
+        "Tyner_Farm": {
+          "specimens": 2,
+          "eligible": true,
+          "correct": 0,
+          "recall": 0.0
+        }
+      },
+      "majority_macro_baseline": 0.3333333333333333,
+      "majority_accuracy_baseline": 0.75,
+      "exact_p": 0.3250915750915751,
+      "assignments": 10920,
+      "macro_delta_from_cls": -0.02777777777777779,
+      "holm_p_twelve_conditions": 1.0
+    },
+    {
+      "position": "lower",
+      "target": "provisional_group",
+      "method": "cls",
+      "macro_recall": 0.5,
+      "ordinary_accuracy": 0.75,
+      "correct": 12,
+      "eligible_specimens": 16,
+      "per_group": {
+        "Love": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 12,
+          "recall": 1.0
+        },
+        "Mixson + Tyner": {
+          "specimens": 4,
+          "eligible": true,
+          "correct": 0,
+          "recall": 0.0
+        }
+      },
+      "majority_macro_baseline": 0.5,
+      "majority_accuracy_baseline": 0.75,
+      "exact_p": 0.3868131868131868,
+      "assignments": 1820,
+      "macro_delta_from_cls": 0.0,
+      "holm_p_twelve_conditions": 1.0
+    },
+    {
+      "position": "lower",
+      "target": "provisional_group",
+      "method": "regional_mean",
+      "macro_recall": 0.4583333333333333,
+      "ordinary_accuracy": 0.6875,
+      "correct": 11,
+      "eligible_specimens": 16,
+      "per_group": {
+        "Love": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 11,
+          "recall": 0.9166666666666666
+        },
+        "Mixson + Tyner": {
+          "specimens": 4,
+          "eligible": true,
+          "correct": 0,
+          "recall": 0.0
+        }
+      },
+      "majority_macro_baseline": 0.5,
+      "majority_accuracy_baseline": 0.75,
+      "exact_p": 0.5181318681318682,
+      "assignments": 1820,
+      "macro_delta_from_cls": -0.041666666666666685,
+      "holm_p_twelve_conditions": 1.0
+    },
+    {
+      "position": "lower",
+      "target": "provisional_group",
+      "method": "regional_patch",
+      "macro_recall": 0.4583333333333333,
+      "ordinary_accuracy": 0.6875,
+      "correct": 11,
+      "eligible_specimens": 16,
+      "per_group": {
+        "Love": {
+          "specimens": 12,
+          "eligible": true,
+          "correct": 11,
+          "recall": 0.9166666666666666
+        },
+        "Mixson + Tyner": {
+          "specimens": 4,
+          "eligible": true,
+          "correct": 0,
+          "recall": 0.0
+        }
+      },
+      "majority_macro_baseline": 0.5,
+      "majority_accuracy_baseline": 0.75,
+      "exact_p": 0.5335164835164835,
+      "assignments": 1820,
+      "macro_delta_from_cls": -0.041666666666666685,
+      "holm_p_twelve_conditions": 1.0
+    }
+  ]
+}

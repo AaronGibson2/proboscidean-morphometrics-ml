@@ -1,0 +1,8 @@
+{
+  "source": "docs/results/regional-results-v1.json",
+  "source_sha256": "b1954aaee80a9f43141c3c77d42988436840ae3574b9b610fc92340f4fdd2f75",
+  "renderer_sha256": "22c39e923df95520d1711d355f1892a64a865c1454c92398ff951ff937b6069f",
+  "conditions": 12,
+  "analysis_rerun": false,
+  "note": "Descriptive displays of saved results; repeated specimens and reused baselines. No uncertainty intervals or superiority tests inferred."
+}

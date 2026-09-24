@@ -1,5 +1,7 @@
 # Understanding and comparing the DINOv3 results
 
+For a simpler explanation with graphs, start with the [visual guide](dinov3-visual-guide.md).
+
 Results through September 23, 2026. This guide covers **36 reported condition rows in five experiment families**: the original 24 plus 12 regional evaluations, four of which reuse CLS baselines. Targets also reuse features. These are repeated analyses of the same photographs, not independent replications.
 
 **The strongest exploratory result is upper teeth at 512px using whole-image features for Love versus Mixson + Tyner: 13/16 correct neighbors (81.2% overall agreement) and 79.2% balanced recall. However, no condition in either eight-condition experiment passes the multiple-comparison correction. We have not established reliable locality discrimination or species identification.** The lower teeth remain especially unpromising with these feature summaries.

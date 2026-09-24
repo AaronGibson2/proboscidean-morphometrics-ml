@@ -35,6 +35,12 @@ Documentation for the current checkout:
 
 ## Latest results
 
+**Prefer pictures? Start with the [visual explanation](docs/dinov3-visual-guide.md): one
+symbol per specimen, simple method-comparison charts, and an explanation of why 75%
+overall agreement can still fail to distinguish the sites.** These charts also appear
+above the tables in the local regional report. To regenerate them from saved results,
+run `.venv\Scripts\python.exe scripts/visualize_dinov3_regional.py`.
+
 The [regional experiment](docs/dinov3-regional-results-v1.md) compares CLS, three-region
 averages and within-region patch matching at 512px. Upper three-locality macro recall
 increases from 75.0% to 79.2% with regional averages (13/15 versus 12/15 correct), but

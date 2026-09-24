@@ -1,5 +1,8 @@
 # DINOv3 regional matching v1 results
 
+See the [visual guide](dinov3-visual-guide.md) for specimen-count diagrams and comparison
+charts. They also appear above the tables in the local `index.html` report.
+
 Frozen 512px features; geometric crown regions awaiting anatomical review. No training.
 
 ## What happened

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="460.8pt" viewBox="0 0 864 460.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-23T22:40:37.186874</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 460.8 
+L 864 460.8 
+L 864 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 103.68 276.48 
+L 794.88 276.48 
+L 794.88 129.024 
+L 103.68 129.024 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m29ae708de9" d="M 0 3.872983 
+C 1.027127 3.872983 2.012324 3.464901 2.738613 2.738613 
+C 3.464901 2.012324 3.872983 1.027127 3.872983 0 
+C 3.872983 -1.027127 3.464901 -2.012324 2.738613 -2.738613 
+C 2.012324 -3.464901 1.027127 -3.872983 0 -3.872983 
+C -1.027127 -3.872983 -2.012324 -3.464901 -2.738613 -2.738613 
+C -3.464901 -2.012324 -3.872983 -1.027127 -3.872983 0 
+C -3.872983 1.027127 -3.464901 2.012324 -2.738613 2.738613 
+C -2.012324 3.464901 -1.027127 3.872983 0 3.872983 
+z
+" style="stroke: #167b63"/>
+    </defs>
+    <g clip-path="url(#pedda651f09)">
+     <use xlink:href="#m29ae708de9" x="138.677468" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="182.424304" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="226.171139" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="269.917975" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="313.66481" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="357.411646" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="401.158481" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="444.905316" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="488.652152" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="532.398987" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="576.145823" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+     <use xlink:href="#m29ae708de9" x="619.892658" y="158.068364" style="fill: #167b63; stroke: #167b63"/>
+    </g>
+   </g>
+   <g id="PathCollection_2"/>
+   <g id="PathCollection_3"/>
+   <g id="PathCollection_4">
+    <defs>
+     <path id="m23770339ab" d="M -4.031129 4.031129 
+L 4.031129 -4.031129 
+M -4.031129 -4.031129 
+L 4.031129 4.031129 
+" style="stroke: #c95b32; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#pedda651f09)">
+     <use xlink:href="#m23770339ab" x="138.677468" y="202.752" style="fill: #c95b32; stroke: #c95b32; stroke-width: 2"/>
+     <use xlink:href="#m23770339ab" x="182.424304" y="202.752" style="fill: #c95b32; stroke: #c95b32; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="PathCollection_5"/>
+   <g id="PathCollection_6">
+    <g clip-path="url(#pedda651f09)">
+     <use xlink:href="#m23770339ab" x="138.677468" y="247.435636" style="fill: #c95b32; stroke: #c95b32; stroke-width: 2"/>
+     <use xlink:href="#m23770339ab" x="182.424304" y="247.435636" style="fill: #c95b32; stroke: #c95b32; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #172d43" x="95.68" y="162.247504" transform="rotate(-0 95.68 162.247504)">Love</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #172d43" x="95.68" y="206.931141" transform="rotate(-0 95.68 206.931141)">Mixson</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #172d43" x="95.68" y="251.614777" transform="rotate(-0 95.68 251.614777)">Tyner</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172d43" x="672.388861" y="160.827739" transform="rotate(-0 672.388861 160.827739)">12/12</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172d43" x="672.388861" y="205.511375" transform="rotate(-0 672.388861 205.511375)">0/2</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172d43" x="672.388861" y="250.195011" transform="rotate(-0 672.388861 250.195011)">0/2</text>
+   </g>
+  </g>
+  <g id="text_7">
+   <text style="font-weight: 700; font-size: 23px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172d43" x="51.84" y="41.472" transform="rotate(-0 51.84 41.472)">Why 75% overall can still be a poor result</text>
+  </g>
+  <g id="text_8">
+   <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172d43" x="51.84" y="71.424" transform="rotate(-0 51.84 71.424)">Lower teeth, original whole-image method: every specimen's nearest neighbor comes from Love.</text>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172d43" x="69.12" y="336.384" transform="rotate(-0 69.12 336.384)">Overall: 12/16 = 75%</text>
+  </g>
+  <g id="text_10">
+   <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172d43" x="449.28" y="336.384" transform="rotate(-0 449.28 336.384)">Balanced: (100% + 0% + 0%) / 3 = 33.3%</text>
+  </g>
+  <g id="text_11">
+   <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172d43" x="69.12" y="377.856" transform="rotate(-0 69.12 377.856)">Love supplies most of the specimens, so it dominates the overall score.</text>
+  </g>
+  <g id="text_12">
+   <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172d43" x="69.12" y="407.808" transform="rotate(-0 69.12 407.808)">But zero Mixson and zero Tyner specimens find a same-site neighbor. This method is not separating all three sites.</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #758392" x="69.12" y="440.064" transform="rotate(-0 69.12 440.064)">Green circle = correct neighbor group. Orange cross = wrong neighbor group. One symbol = one catalog ID.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pedda651f09">
+   <rect x="103.68" y="129.024" width="691.2" height="147.456"/>
+  </clipPath>
+ </defs>
+</svg>

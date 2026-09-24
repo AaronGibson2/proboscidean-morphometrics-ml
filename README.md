@@ -14,15 +14,16 @@ The research asks whether tooth photographs contain a reproducible signal that d
 
 ## Code and findings
 
-**Start with the [complete results guide](docs/results-summary.md): all 24 conditions, plain-language metric explanations, specimen counts, baselines, and comparisons between experiments.** The [numerical snapshot](docs/results/numerical-results.json) preserves exact results on GitHub; full visual reports remain local in `outputs/`.
+**Start with the [complete results guide](docs/results-summary.md): 36 reported condition rows (including reused baselines), plain-language explanations, counts, baselines, and comparisons.** Exact numbers are preserved in the [original snapshot](docs/results/numerical-results.json) and [regional snapshot](docs/results/regional-results-v1.json); visual reports remain local in `outputs/`.
 
-The pilot and crown implementation was merged into `main` through PR #1. The latest provisional-group analysis and consolidated guide are on `dinov3/provisional-group-comparison` until that branch is merged.
+The pilot and crown implementation was merged into `main` through PR #1. The latest regional experiment and updated guide are on `dinov3/regional-matching-v1`, which includes the preceding provisional-group analysis.
 
 | Branch | Purpose |
 | --- | --- |
 | [`dinov3/conservative-crop-pilot`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/conservative-crop-pilot) | Frozen baseline, audited crop recipes, and pilot results |
 | [`dinov3/crown-patch-experiment`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/crown-patch-experiment) | Includes the pilot plus crown-patch pooling, resolution comparisons, and locality-balanced evaluation |
 | [`dinov3/provisional-group-comparison`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/provisional-group-comparison) | Adds exploratory Love versus Mixson + Tyner comparisons and the consolidated results guide |
+| [`dinov3/regional-matching-v1`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/regional-matching-v1) | Adds geometric regional matching, 43 review pairs, and draft specimen/image metadata inventories |
 
 Documentation for the current checkout:
 
@@ -33,6 +34,18 @@ Documentation for the current checkout:
 - [All eight crown experiment results](docs/dinov3-crown-results.md)
 
 ## Latest results
+
+The [regional experiment](docs/dinov3-regional-results-v1.md) compares CLS, three-region
+averages and within-region patch matching at 512px. Upper three-locality macro recall
+increases from 75.0% to 79.2% with regional averages (13/15 versus 12/15 correct), but
+the provisional grouping and lower results do not improve. None of its 12 conditions
+passes Holm correction. Regions are geometric, not verified anatomical landmarks.
+
+Draft [specimen](metadata/specimen_review_v1.csv) and [image](metadata/image_review_v1.csv)
+inventories are ready for collection-record and anatomical review. Unverified fields
+remain unknown; these drafts do not overwrite original labels or assign taxa.
+
+### Previous crown and provisional-group comparisons
 
 An additional [provisional Love versus Mixson + Tyner comparison](docs/dinov3-group-hypothesis-results.md)
 uses the same cached features to explore a literature-motivated grouping. Specimen-level taxon
@@ -71,7 +84,7 @@ On Windows PowerShell, select the branch containing all experiments:
 
 ```powershell
 git fetch origin
-git switch dinov3/provisional-group-comparison
+git switch dinov3/regional-matching-v1
 ```
 
 For a fresh environment, use Python 3.10 or 3.11 and install a compatible PyTorch/torchvision build for your hardware. On the configured workstation, use the existing `.venv` instead of creating it again.
@@ -104,6 +117,17 @@ The crown experiment uses the cached checkpoint offline. Skip preparation when m
 
 ## Local reports and validation
 
+After the crown caches exist, run the new regional experiment with no further model inference:
+
+```powershell
+.venv\Scripts\python.exe scripts/run_dinov3_regional.py --prepare-only
+.venv\Scripts\python.exe scripts/run_dinov3_regional.py
+```
+
+The first command validates inputs and creates draft review inventories. Completed outputs
+are protected against overwrite. See the [regional results](docs/dinov3-regional-results-v1.md)
+for review instructions and the exact-cache reproduction requirements.
+
 | Local file | Contents |
 | --- | --- |
 | `outputs/qc/crop_black_v2/index.html` | Source / old / revised image comparisons |
@@ -111,6 +135,8 @@ The crown experiment uses the cached checkpoint offline. Skip preparation when m
 | `outputs/qc/crown_regions_v1/index.html` | Contributing crown patches at both resolutions |
 | `outputs/dinov3_crown_v1/index.html` | All eight experimental conditions and individual reports |
 | `outputs/dinov3_group_hypothesis_v1/index.html` | Eight provisional-group comparisons using the cached crown-experiment features |
+| `outputs/dinov3_regional_v1/index.html` | Twelve regional/baseline evaluations with exact permutation tests |
+| `outputs/dinov3_regional_v1/review.html` | Forty-three neighbor-pair panels with proposed patch correspondences and locality labels hidden |
 
 These paths refer to generated local files, not hosted GitHub pages. Individual runs record input hashes, checkpoint revision, crop/region provenance, and specimen-level results.
 
@@ -118,7 +144,7 @@ These paths refer to generated local files, not hosted GitHub pages. Individual 
 .venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-The provisional-group implementation passed 28 local software tests. These check code behavior; they are separate from the 24 analytical conditions and do not establish scientific validity. Tests involving private photographs or optional model dependencies can skip when those resources are absent.
+The regional implementation passed 35 local software tests. These check code behavior; they are separate from the 36 reported analytical rows and do not establish scientific validity. Tests involving private photographs or optional model dependencies can skip when those resources are absent.
 
 ## Limitations and next steps
 

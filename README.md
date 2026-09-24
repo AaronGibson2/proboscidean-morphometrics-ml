@@ -14,6 +14,13 @@ The research asks whether tooth photographs contain a reproducible signal that d
 
 ## Code and findings
 
+**New: [molar morphology and specimen identity review](docs/molar-morphology-assessment-v1.md).**
+This connects the published anatomical comparisons to our photos and 27 UF catalog records.
+It flags a tooth-position conflict for UF 212304, distinguishes catalog evidence from new
+identifications, and links a local visual review of all 37 photos. No new taxa were assigned.
+The [primary-literature guide](docs/molar-taxonomy-primary-literature.md) explains the characters
+and competing treatments of *floridanus*. These additions are on `morphology/literature-audit-v1`.
+
 **Start with the [complete results guide](docs/results-summary.md): 36 reported condition rows (including reused baselines), plain-language explanations, counts, baselines, and comparisons.** Exact numbers are preserved in the [original snapshot](docs/results/numerical-results.json) and [regional snapshot](docs/results/regional-results-v1.json); visual reports remain local in `outputs/`.
 
 The pilot and crown implementation was merged into `main` through PR #1. The latest regional experiment and updated guide are on `dinov3/regional-matching-v1`, which includes the preceding provisional-group analysis.
@@ -24,6 +31,7 @@ The pilot and crown implementation was merged into `main` through PR #1. The lat
 | [`dinov3/crown-patch-experiment`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/crown-patch-experiment) | Includes the pilot plus crown-patch pooling, resolution comparisons, and locality-balanced evaluation |
 | [`dinov3/provisional-group-comparison`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/provisional-group-comparison) | Adds exploratory Love versus Mixson + Tyner comparisons and the consolidated results guide |
 | [`dinov3/regional-matching-v1`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/dinov3/regional-matching-v1) | Adds geometric regional matching, 43 review pairs, and draft specimen/image metadata inventories |
+| [`morphology/literature-audit-v1`](https://github.com/AaronGibson2/proboscidean-morphometrics-ml/tree/morphology/literature-audit-v1) | Adds primary literature, catalog evidence, a tooth-position discrepancy and a visual morphology review |
 
 Documentation for the current checkout:
 
@@ -79,6 +87,11 @@ Whole-image and crown-patch features achieved the same recall within each resolu
 | Lower M3 | Tyner Farm | 4 | 2 |
 
 The four lower Tyner photographs are paired teeth labeled `UF-212304` and `UF-217472`. Grouping is inferred from filenames and still requires collection-record confirmation. Features from photographs of one catalog ID are averaged before comparison, and a specimen cannot retrieve another photograph of itself as an independent neighbor.
+
+**Position check pending:** a published description lists UF 212304 with m1/m2,
+conflicting with our m3 filenames. The saved experiments retain the original labels;
+see the [morphology assessment](docs/molar-morphology-assessment-v1.md) before interpreting
+the lower Tyner comparison as confirmed third-molar anatomy.
 
 For three-locality evaluation, upper Tyner remains in the reference pool but cannot be evaluated as a locality query because it has no second independent reference. For the provisional grouping, it becomes eligible because Mixson provides same-group references.
 
@@ -143,6 +156,7 @@ for review instructions and the exact-cache reproduction requirements.
 | `outputs/dinov3_group_hypothesis_v1/index.html` | Eight provisional-group comparisons using the cached crown-experiment features |
 | `outputs/dinov3_regional_v1/index.html` | Twelve regional/baseline evaluations with exact permutation tests |
 | `outputs/dinov3_regional_v1/review.html` | Forty-three neighbor-pair panels with proposed patch correspondences and locality labels hidden |
+| `outputs/morphology_literature_v1/index.html` | All 37 photos with visibility notes and catalog/literature evidence; build with `scripts/build_morphology_review.py` |
 
 These paths refer to generated local files, not hosted GitHub pages. Individual runs record input hashes, checkpoint revision, crop/region provenance, and specimen-level results.
 
